@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Collections - ATELIER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e5e2e1",
+                        "outline-variant": "#dcc0ba",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffdad3",
+                        "on-surface-variant": "#56423e",
+                        "tertiary-fixed": "#8ef4e4",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "on-tertiary-container": "#f4fffb",
+                        "secondary": "#835146",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#683a30",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#bb5640",
+                        "outline": "#89726d",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#9e412d",
+                        "tertiary-container": "#008377",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#7a493f",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-primary": "#ffb4a4",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#71d8c9",
+                        "on-error": "#ffffff",
+                        "primary": "#9b3f2b",
+                        "on-primary-fixed-variant": "#7f2a18",
+                        "secondary-fixed-dim": "#f8b7a9",
+                        "surface-container-high": "#eae7e7",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "on-primary-fixed": "#3e0500",
+                        "tertiary": "#00685e",
+                        "background": "#fcf9f8",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#ffdad3",
+                        "on-secondary-fixed": "#341109",
+                        "secondary-container": "#febcae",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-neutral-900/80 backdrop-blur-md">
+<nav class="flex justify-between items-center px-8 py-4 max-w-full mx-auto tonal-shift via backdrop-blur-xl flat no shadows">
+<!-- Logo -->
+<div class="flex-1 md:flex-none">
+<a class="text-2xl font-bold tracking-tighter text-neutral-900 dark:text-stone-50 font-epilogue" href="#">ATELIER</a>
+</div>
+<!-- Navigation Links (Web) -->
+<div class="hidden md:flex flex-1 justify-center gap-8">
+<a class="font-label text-sm uppercase tracking-wider text-neutral-700 dark:text-stone-300 hover:text-orange-800 transition-colors hover:opacity-70 transition-all duration-300" href="#">Shop All</a>
+<a class="font-label text-sm uppercase tracking-wider text-neutral-700 dark:text-stone-300 hover:text-orange-800 transition-colors hover:opacity-70 transition-all duration-300" href="#">New Arrivals</a>
+<a class="font-label text-sm uppercase tracking-wider text-orange-800 dark:text-orange-500 border-b-2 border-orange-800 pb-1 hover:opacity-70 transition-all duration-300" href="#">Collections</a>
+<a class="font-label text-sm uppercase tracking-wider text-neutral-700 dark:text-stone-300 hover:text-orange-800 transition-colors hover:opacity-70 transition-all duration-300" href="#">Editorial</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex flex-1 justify-end items-center gap-6">
+<!-- Search (on_right) -->
+<button aria-label="Search" class="text-neutral-900 hover:opacity-70 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="person" class="text-neutral-900 hover:opacity-70 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="text-neutral-900 hover:opacity-70 transition-all duration-300 relative">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-primary text-on-primary text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-label">2</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow pt-32 pb-24 px-4 md:px-8 max-w-[1600px] mx-auto w-full flex flex-col md:flex-row gap-12">
+<!-- Sidebar Filters -->
+<aside class="w-full md:w-64 flex-shrink-0 flex flex-col gap-10">
+<!-- Header -->
+<div>
+<h1 class="font-headline text-3xl font-bold tracking-tight mb-2">Collections</h1>
+<p class="font-body text-on-surface-variant text-sm">Explore our curated selection for the modern canvas.</p>
+</div>
+<!-- Filter Categories -->
+<div class="space-y-8">
+<!-- Category -->
+<div>
+<h3 class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant mb-4">Category</h3>
+<ul class="space-y-3 font-body text-sm">
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input checked="" class="form-checkbox text-primary border-outline-variant focus:ring-primary rounded-DEFAULT w-4 h-4 bg-transparent" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">All Clothing</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary border-outline-variant focus:ring-primary rounded-DEFAULT w-4 h-4 bg-transparent" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Dresses</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary border-outline-variant focus:ring-primary rounded-DEFAULT w-4 h-4 bg-transparent" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Knitwear</span>
+</label>
+</li>
+<li>
+<label class="flex items-center gap-3 cursor-pointer group">
+<input class="form-checkbox text-primary border-outline-variant focus:ring-primary rounded-DEFAULT w-4 h-4 bg-transparent" type="checkbox"/>
+<span class="group-hover:text-primary transition-colors">Outerwear</span>
+</label>
+</li>
+</ul>
+</div>
+<!-- Size -->
+<div>
+<h3 class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant mb-4">Size</h3>
+<div class="grid grid-cols-3 gap-2">
+<button class="py-2 text-sm font-label border border-outline-variant/50 hover:border-primary text-on-surface hover:text-primary transition-colors rounded-DEFAULT">XS</button>
+<button class="py-2 text-sm font-label border border-primary bg-primary text-on-primary transition-colors rounded-DEFAULT">S</button>
+<button class="py-2 text-sm font-label border border-outline-variant/50 hover:border-primary text-on-surface hover:text-primary transition-colors rounded-DEFAULT">M</button>
+<button class="py-2 text-sm font-label border border-outline-variant/50 hover:border-primary text-on-surface hover:text-primary transition-colors rounded-DEFAULT">L</button>
+<button class="py-2 text-sm font-label border border-outline-variant/50 hover:border-primary text-on-surface hover:text-primary transition-colors rounded-DEFAULT">XL</button>
+</div>
+</div>
+<!-- Price -->
+<div>
+<h3 class="font-label text-xs uppercase tracking-[0.05em] text-on-surface-variant mb-4">Price</h3>
+<div class="space-y-4">
+<div class="flex items-center gap-2">
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-1 text-sm font-body placeholder:text-on-surface-variant/50" placeholder="Min" type="number"/>
+<span class="text-on-surface-variant">-</span>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary focus:ring-0 px-0 py-1 text-sm font-body placeholder:text-on-surface-variant/50" placeholder="Max" type="number"/>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Product Grid Area -->
+<div class="flex-1 flex flex-col gap-8">
+<!-- Active Filters & Sorting (Top Bar) -->
+<div class="flex flex-wrap items-center justify-between gap-4 py-4 border-b border-surface-variant/50">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label text-xs uppercase tracking-wide text-on-surface-variant mr-2">Active:</span>
+<span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full text-sm font-body">
+                        Size: S
+                        <button aria-label="Remove filter" class="hover:text-primary ml-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</button>
+</span>
+<button class="text-sm font-label text-primary hover:underline underline-offset-4 ml-2">Clear All</button>
+</div>
+<div class="flex items-center gap-3">
+<label class="font-label text-xs uppercase tracking-wide text-on-surface-variant" for="sort">Sort By</label>
+<select class="bg-transparent border-none text-sm font-body font-medium focus:ring-0 cursor-pointer pr-8 py-1" id="sort">
+<option>Newest</option>
+<option>Price: Low to High</option>
+<option>Price: High to Low</option>
+</select>
+</div>
+</div>
+<!-- The Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+<!-- Product Card 1 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<!-- Image Area -->
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Model wearing a minimalist draped silk dress in soft cream tone against a brutalist concrete wall" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Model wearing a minimalist draped silk dress in soft cream tone against a brutalist concrete wall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAChBLudQxzB0xtlJ4pqqxwayc_nPhQZ1BnbZoVkqilUf_M80o6u0jbyMwKR36NaiptJOgT9fGKGxVkA1vWLicRpn2Wb3PGIILdjOvFjFPtZByWe9SYjahxv50Fb-SzXryuuG8Rrzlq3oN6ObqweJjT9SGa-RLibdl3eYHZWyTk7uc19oFtAyOvSpXKoubnhg_cCk8hHih6UUIdpaYhV-Z_qtqzfI0clNUQlGfpnVS1Nerdze-Nf3s7mY6QBi1y-kDGmXmLZA9a46D1"/>
+<!-- Quick Add Overlay -->
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+<button class="absolute top-4 right-4 text-on-surface hover:text-primary transition-colors bg-surface-container-lowest/80 backdrop-blur-sm p-2 rounded-full">
+<span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<!-- Metadata -->
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Dresses</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">The Silk Drape Midi</h3>
+<p class="font-body text-sm mt-1">$285.00</p>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Close up of a textured oversized wool knit sweater in warm terracotta color, soft studio lighting" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Close up of a textured oversized wool knit sweater in warm terracotta color, soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKJt4fBrYkLhao_JlscKSh7HEDSirZXMaZoQT0IVfdElantWl0w4_XP_2_dCoejl0k6ARtTuMBwS6zvDLLiZK6mnZ69s5hfySh9xupswx8-RlXjaVtKdTpCPvStdH46_SH-5-IlktZxgNpT_-33Rj-mO-_DzUk44t0CEQ2pkj6kiY7bR-P9nGuQmIN8m_WHkqbx86QbiTVHT8J72Hes1xPSXSybcp0-vk9Vx1qHxWOyaH2sk0MqpTkSM2ysYHPtuNJTR2_cFRkm3qW"/>
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Knitwear</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">Oversized Alpaca Blend</h3>
+<p class="font-body text-sm mt-1">$195.00</p>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Person wearing a structured tailored wool coat in charcoal grey standing in an empty gallery space" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Person wearing a structured tailored wool coat in charcoal grey standing in an empty gallery space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_Y3JOwObNyKz9-L2nz0p4uI2jhvcot-sTLeQnJBVFkFkUtrFO-01FoQaTIGseM2DhzcZHAHD1gLKHwQj115yh9nvtnLwEsWzqugA-Gg0ubRmWlwIH221kIxFmklBEI9ZVLQMPlFH617vb3rCmiqmpZWGj77PghAc26g8c6iKc4eVvZndUIkIorxbbnmlzlI9R0fhevdl500YgCGaWlL7VvxXJcKM6auYnw7H997viZaBI57EOeVQFYgHeT8Mg_SYhaoIEomA53zkE"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-container-lowest text-on-surface font-label text-[10px] uppercase tracking-wider px-2 py-1 rounded-sm">New</span>
+</div>
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Outerwear</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">Architectural Wool Coat</h3>
+<p class="font-body text-sm mt-1">$450.00</p>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Flat lay of a ribbed cotton tank top in stone white on a textured plaster background" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Flat lay of a ribbed cotton tank top in stone white on a textured plaster background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-QqRv4Vf0Wre0qH3UpHQXC8iRVcNaVurjes9XtINajvwZApFbTCfiQQNSjW0a-2uzjSLX5EZc9v94QfZCUR_DdG2VfV1yyei8Ram0LKWtBziAot232uNRaw-PgTw0H5aaqf6ttjdFnSZm0k1V_wO1E50XE_Kc-vlLNt35QMuaAY2u6a-koFNGfehyVbkIg2WqVueOPwc5bJpEOPrWtNxnBoZ61UNWD4AxBoF2_wkCelw3Xe5HATezwXN9TWlgnB_LY2e3dvr96SoJ"/>
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Essentials</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">Ribbed Cotton Tank</h3>
+<p class="font-body text-sm mt-1">$45.00</p>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Woman walking in wide leg tailored trousers in warm taupe on a sunlit city street" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Woman walking in wide leg tailored trousers in warm taupe on a sunlit city street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3xRSJL4U4NWxwNmVvGvVddoAOtgSCTYi_weTio7DZsb3u1htHlLr8jKjoGjL2iaCnxaDpcPSYq_s33kvMkyNLOeuqxGZeK5mAQtbWmcAm4jkKQzY1vsZSqwV3L1-BN7rphtNCaWrFPEgk3gdnidj9Rt8FwJR5eACQDV2ivTUr1GUJ7-QkkogpdhukGdrx7s2GsHMM3rmH9Py0hUPEykg7Q2POzZjUdFDG-XOb7XaZ-Sg79tGbHMAnUYQFdqNS2p8T5F1N2FRHSpIZ"/>
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Trousers</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">Wide Leg Tailored Trouser</h3>
+<p class="font-body text-sm mt-1">$210.00</p>
+</div>
+</div>
+<!-- Product Card 6 -->
+<div class="group flex flex-col relative bg-surface-container-lowest">
+<div class="relative aspect-[3/4] mb-6 overflow-hidden bg-surface-variant">
+<img alt="Detail shot of a light linen button down shirt hanging on a wooden hanger with dappled sunlight" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="Detail shot of a light linen button down shirt hanging on a wooden hanger with dappled sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ94vVIIhATXxISgAZEf0f8Vf285enRPCl2iViY2flfy2xxtedLVljghvpfA74045_RXbopN8Iv_ORBqbkj8CTv4-lZe9UmEoqsUhf_oQjkGNYATWAIvfyLsqERkQyyOu-giyJ1BEIKTGFyQqkO5SDwAS3VtqWkLG9LIy2KMOyhvqB6tHDNUQN4awH_PTGqWYFRqaeTUKqkJ0-TIu61wmXIIFerzShoDo3R7LIUpr3j6grp4hsub8pgXn-6ZZ2D-G5olHreW6xGvC1"/>
+<div class="absolute inset-x-0 bottom-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wide rounded-DEFAULT shadow-[0_8px_16px_rgba(155,63,43,0.2)] hover:shadow-[0_12px_24px_rgba(155,63,43,0.3)] transition-all flex justify-center items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span> Quick Add
+                            </button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<p class="font-label text-[10px] uppercase tracking-[0.1em] text-on-surface-variant">Shirting</p>
+<h3 class="font-headline text-lg tracking-tight font-medium">Breezy Linen Button Down</h3>
+<p class="font-body text-sm mt-1">$145.00</p>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex justify-center border-t border-surface-container pt-8">
+<button class="font-label text-sm uppercase tracking-wider text-on-surface underline underline-offset-4 decoration-outline hover:text-primary hover:decoration-primary transition-all duration-300">
+                    Load More Projects
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-neutral-950 w-full py-16 px-8 mt-auto tonal shift from surface to surface-container-low flat no shadows">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<!-- Brand -->
+<div class="flex flex-col gap-4">
+<span class="font-epilogue font-bold text-lg text-neutral-900 dark:text-stone-50">ATELIER</span>
+<p class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 max-w-xs mt-2">
+                    Crafting the modern canvas through intentional design and sustainable practices.
+                </p>
+</div>
+<!-- Links Group 1 -->
+<div class="flex flex-col gap-4">
+<a class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 hover:opacity-70 transition-all duration-300 underline underline-offset-4 decoration-orange-800/30" href="#">Sustainability</a>
+<a class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 hover:opacity-70 transition-all duration-300 underline underline-offset-4 decoration-orange-800/30" href="#">Shipping &amp; Returns</a>
+</div>
+<!-- Links Group 2 -->
+<div class="flex flex-col gap-4">
+<a class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 hover:opacity-70 transition-all duration-300 underline underline-offset-4 decoration-orange-800/30" href="#">Store Locator</a>
+<a class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 hover:opacity-70 transition-all duration-300 underline underline-offset-4 decoration-orange-800/30" href="#">Privacy</a>
+</div>
+<!-- Links Group 3 -->
+<div class="flex flex-col gap-4">
+<a class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400 hover:opacity-70 transition-all duration-300 underline underline-offset-4 decoration-orange-800/30" href="#">Journal</a>
+</div>
+</div>
+<!-- Copyright -->
+<div class="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-800 max-w-7xl mx-auto text-center md:text-left">
+<p class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400">© 2024 DIGITAL ATELIER. CRAFTED FOR THE MODERN CANVAS.</p>
+</div>
+</footer>
+</body></html>

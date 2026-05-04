@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Digital Atelier - Product Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e5e2e1",
+                    "outline-variant": "#dcc0ba",
+                    "surface-container-highest": "#e5e2e1",
+                    "primary-fixed": "#ffdad3",
+                    "on-surface-variant": "#56423e",
+                    "tertiary-fixed": "#8ef4e4",
+                    "primary-fixed-dim": "#ffb4a4",
+                    "on-tertiary-container": "#f4fffb",
+                    "secondary": "#835146",
+                    "on-tertiary-fixed": "#00201c",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-secondary-fixed-variant": "#683a30",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#1b1c1c",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#bb5640",
+                    "outline": "#89726d",
+                    "surface": "#fcf9f8",
+                    "surface-tint": "#9e412d",
+                    "tertiary-container": "#008377",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#7a493f",
+                    "surface-bright": "#fcf9f8",
+                    "inverse-primary": "#ffb4a4",
+                    "surface-dim": "#dcd9d9",
+                    "tertiary-fixed-dim": "#71d8c9",
+                    "on-error": "#ffffff",
+                    "primary": "#9b3f2b",
+                    "on-primary-fixed-variant": "#7f2a18",
+                    "secondary-fixed-dim": "#f8b7a9",
+                    "surface-container-high": "#eae7e7",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "surface-container": "#f0eded",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#303030",
+                    "on-primary-fixed": "#3e0500",
+                    "tertiary": "#00685e",
+                    "background": "#fcf9f8",
+                    "on-primary-container": "#fffbff",
+                    "surface-container-low": "#f6f3f2",
+                    "secondary-fixed": "#ffdad3",
+                    "on-secondary-fixed": "#341109",
+                    "secondary-container": "#febcae",
+                    "inverse-on-surface": "#f3f0ef",
+                    "error": "#ba1a1a",
+                    "on-background": "#1b1c1c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue", "sans-serif"],
+                    "body": ["Manrope", "sans-serif"],
+                    "label": ["Manrope", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { background-color: theme('colors.surface'); color: theme('colors.on-surface'); }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- TopNavBar Shared Component -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/80 backdrop-blur-md tonal-shift via backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<!-- Brand Logo -->
+<a class="text-2xl font-bold tracking-tighter text-neutral-900 font-epilogue font-headline" href="#">ATELIER</a>
+<!-- Navigation Links (Web) -->
+<div class="hidden md:flex space-x-8">
+<a class="text-neutral-700 hover:text-orange-800 transition-colors font-label tracking-wider uppercase text-sm" href="#">Shop All</a>
+<a class="text-neutral-700 hover:text-orange-800 transition-colors font-label tracking-wider uppercase text-sm" href="#">New Arrivals</a>
+<a class="text-neutral-700 hover:text-orange-800 transition-colors font-label tracking-wider uppercase text-sm" href="#">Collections</a>
+<a class="text-neutral-700 hover:text-orange-800 transition-colors font-label tracking-wider uppercase text-sm" href="#">Editorial</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex space-x-6">
+<button class="text-orange-800 hover:opacity-70 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="text-orange-800 hover:opacity-70 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button class="text-orange-800 hover:opacity-70 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Product Section -->
+<main class="flex-grow pt-32 pb-24 px-4 md:px-8 max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumbs -->
+<div class="mb-8 flex items-center space-x-2 text-sm font-label tracking-wider uppercase text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Shop All</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Collections</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface font-semibold">The Oversized Cashmere Blend</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+<!-- Product Gallery (Left) -->
+<div class="lg:col-span-7 flex flex-col md:flex-row gap-4 h-full">
+<!-- Thumbnails (Web) -->
+<div class="hidden md:flex flex-col space-y-4 w-24 flex-shrink-0">
+<button class="w-full aspect-[3/4] bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary ring-offset-2 ring-offset-surface">
+<img alt="Thumbnail 1" class="w-full h-full object-cover" data-alt="close-up texture shot of cream cashmere sweater weave with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4m3MI-vHvc81MMccvSxVk_Z75PqrdsyaW9lD46ddmBA4kvAtchkMu8ztLh-55_rMyXy7jQfpw4SF-oFjJCp6xQ0uCMLD3btMiSDzZxh7OKBKguFaDp6QieE0kf4tt9ti7O8_5IXZki7qyMwz3cnJ-amH1v1UG8Y2hyHnidjVeDnx46AXpHDY-7u2aKseg9OXqdfpJBgz4y3xs8745YrIB24vRO_4aeSehKRWTFVq3dG_eAQ8LiPA9SRYECD6hEvPFr757exhi5PZS"/>
+</button>
+<button class="w-full aspect-[3/4] bg-surface-variant focus:outline-none opacity-60 hover:opacity-100 transition-opacity">
+<img alt="Thumbnail 2" class="w-full h-full object-cover" data-alt="model wearing cream oversized sweater side profile against stark white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHeOsOzuCHvPE8I8QeRQ6zrq9nC2nIRyZD04PXHiANLAoYRATU7yS-quFpCiPxiUW7Yd5Hwr14wEMRBmjjzF9ei-FCKDhSzN4y7-GVMvbJzsNjfudoVJO0b1GuhUFkEn2_mFE6NCaWR5lOE8EFiQ8KRivnSckq8Ye5wI9OspxwvQP53xsd6c9OuQsScBzcvD7jkMm2QYtTLC0Qq6l8cmxhwXWk2att6jGZxRqvXtJjXd8fFkJSYkCDiYwpTWl9B8JVwmrOq0zyqJc6"/>
+</button>
+<button class="w-full aspect-[3/4] bg-surface-variant focus:outline-none opacity-60 hover:opacity-100 transition-opacity">
+<img alt="Thumbnail 3" class="w-full h-full object-cover" data-alt="detail shot of sweater cuff and hem showing thick ribbed knitting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNfJ7Os1Q-0b3AQdf1z86Ea3JLiCEXgmrOkGvNXvuey252fPCE-pui5MiGLDmA9BNEAjkvs3VXVz81ySQf1IjCD7ErMUFWA_N-VHh8c4KLd7D9ucIJtwFxCN_0KD5UK6vbf1Ql1fZiBFfFemJ8xUakEvyVr2r-XMf908e4-Huk2EUIwnxbA_ix1gg9DJNSYfQPafeBDj_OWAHjFxkqSC0jOnPtf7MS3dMhdR-NgiU-VAS188b0uDJ_k-_9fH20Ya96G0XIWCECoqTF"/>
+</button>
+</div>
+<!-- Main Image -->
+<div class="flex-grow bg-surface-variant aspect-[3/4] relative overflow-hidden group">
+<img alt="Main Product Image" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="fashion editorial style full length shot of model in cream oversized cashmere sweater against warm beige seamless paper background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1W2_Zcrlps0X4uEsPFaf55q2P_PClgVySxbT5KuxkteD8UviUooh-93HGTADtQyCLaUd1lREXnhKmiWI_koos69eejPQyvrPon5lgWj-wNIsx7e3qQVr8-Fe_PHrBywIJaHV5EUQUNIr_vnSliz81nirRJCLoHByEouti4HZ1p4ongeA0BumwIWCnRIrMbDhk0v6D1StA9AZ-sfNeqYzJrBeJp2L-xZSCsYDRzpu9E8mLVHy93paMg5Mcmu2_mG_KkmyGBmaG7az1"/>
+</div>
+<!-- Thumbnails (Mobile Horizontal Scroll) -->
+<div class="flex md:hidden space-x-4 overflow-x-auto pb-2 snap-x">
+<button class="w-20 flex-shrink-0 aspect-[3/4] bg-surface-variant focus:outline-none focus:ring-2 focus:ring-primary ring-offset-2 ring-offset-surface snap-start">
+<img alt="Thumbnail 1" class="w-full h-full object-cover" data-alt="close-up texture shot of cream cashmere sweater weave with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrdNgpXU4T9bQu1Gpkyh8QSCiucvVpruPCxn_2xybJ7xKkmBQzP33st2dQ9hY58YKFbIOfKYbWf3cRv8FfVuCFyo9fquXY3CMwjcwPJ3cOMCrUYUsdnD2Hv_JMcV3vVbQGmKdAlMJvjMTzwh5kBm3GZZazYSutplcBlcRq88wTb-T0-Wt_hXQTlTCISRKgQFrRdtRESDYWaY7EjS8xWQECoTjI8WoZQ-771T-GWvtlE2Lhhmx1hl7pkmlIdGDdnq5f3w7fDjjyl309"/>
+</button>
+<button class="w-20 flex-shrink-0 aspect-[3/4] bg-surface-variant focus:outline-none opacity-60 snap-start">
+<img alt="Thumbnail 2" class="w-full h-full object-cover" data-alt="model wearing cream oversized sweater side profile against stark white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpCLwcyuVpXhHmCZXK4SGpTyHANsPLiD22UTKfR-U5w_lxS9Gv5DAectNI1DNgT9gOuMBuAbRtGjQQomRL3FtGaBmZMtI-szfEK25yxSjDbjnrAy_CVyhF8d0Gokuoy-tp7ZboAtvkwwlk4fHOM-IPd_1YDZoVA3dGlS1br4C76PvaVOLK9XADgYUJGqimps5MOxi99bPEeGpOYW4N_ROpilbnxMGgyA9rW1qLvvjiH6An3u8EeZzj9oOoFFyWqW1nwG05x-7lgKaY"/>
+</button>
+</div>
+</div>
+<!-- Product Details (Right) -->
+<div class="lg:col-span-5 flex flex-col pt-4 lg:pt-12">
+<!-- Title & Price -->
+<div class="mb-10">
+<h1 class="font-headline text-4xl lg:text-5xl font-bold tracking-tight text-on-surface mb-4 leading-tight">The Oversized<br/>Cashmere Blend</h1>
+<p class="font-body text-xl text-on-surface-variant">$345.00</p>
+</div>
+<!-- Color Selection -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-3">
+<span class="font-label text-xs uppercase tracking-wider text-on-surface-variant">Color</span>
+<span class="font-body text-sm text-on-surface">Oatmeal</span>
+</div>
+<div class="flex space-x-3">
+<button aria-label="Select Oatmeal color" class="w-10 h-10 rounded-full border-2 border-outline focus:outline-none relative">
+<span class="absolute inset-1 rounded-full bg-[#E5DCC4]"></span>
+</button>
+<button aria-label="Select Charcoal color" class="w-10 h-10 rounded-full border border-outline-variant hover:border-outline focus:outline-none relative">
+<span class="absolute inset-1 rounded-full bg-[#4A4A4A]"></span>
+</button>
+<button aria-label="Select Navy color" class="w-10 h-10 rounded-full border border-outline-variant hover:border-outline focus:outline-none relative">
+<span class="absolute inset-1 rounded-full bg-[#1A2639]"></span>
+</button>
+</div>
+</div>
+<!-- Size Selection -->
+<div class="mb-10">
+<div class="flex justify-between items-end mb-3">
+<span class="font-label text-xs uppercase tracking-wider text-on-surface-variant">Size</span>
+<a class="font-body text-sm text-primary underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-colors" href="#">Size Guide</a>
+</div>
+<div class="grid grid-cols-4 gap-3">
+<button class="py-3 border border-outline-variant text-center font-label text-sm hover:border-outline transition-colors text-on-surface-variant">XS</button>
+<button class="py-3 border border-outline bg-surface-container-low text-center font-label text-sm text-on-surface">S</button>
+<button class="py-3 border border-outline-variant text-center font-label text-sm hover:border-outline transition-colors text-on-surface-variant">M</button>
+<button class="py-3 border border-outline-variant text-center font-label text-sm hover:border-outline transition-colors text-on-surface-variant opacity-50 cursor-not-allowed">L</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col space-y-4 mb-12">
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label text-sm uppercase tracking-wider rounded transition-transform active:scale-[0.98] shadow-[0_24px_48px_rgba(27,28,28,0.06)] hover:shadow-[0_12px_24px_rgba(27,28,28,0.08)]">
+                        Add to Cart
+                    </button>
+<button class="w-full py-4 bg-transparent border border-outline-variant/20 text-on-surface font-label text-sm uppercase tracking-wider rounded hover:bg-surface-container-low transition-colors">
+                        Buy Now
+                    </button>
+</div>
+<!-- Accordion Details -->
+<div class="border-t border-outline-variant/20 divide-y divide-outline-variant/20">
+<!-- Description -->
+<details class="group py-5" open="">
+<summary class="flex justify-between items-center font-label uppercase tracking-wider text-sm cursor-pointer list-none">
+<span class="text-on-surface font-semibold">Description</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 font-body text-sm text-on-surface-variant leading-relaxed">
+<p>Crafted for the modern silhouette. This oversized knit uses a premium blend of ethically sourced cashmere and superfine merino wool, resulting in an incredibly soft, breathable texture that drapes effortlessly. Designed with dropped shoulders and an extended ribbed hem for structural contrast.</p>
+</div>
+</details>
+<!-- Materials & Care -->
+<details class="group py-5">
+<summary class="flex justify-between items-center font-label uppercase tracking-wider text-sm cursor-pointer list-none">
+<span class="text-on-surface font-semibold">Materials &amp; Care</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 font-body text-sm text-on-surface-variant leading-relaxed">
+<ul class="list-disc pl-4 space-y-2">
+<li>70% Superfine Merino Wool, 30% Cashmere</li>
+<li>Dry clean only or gentle hand wash cold</li>
+<li>Dry flat, do not wring</li>
+</ul>
+</div>
+</details>
+<!-- Shipping -->
+<details class="group py-5">
+<summary class="flex justify-between items-center font-label uppercase tracking-wider text-sm cursor-pointer list-none">
+<span class="text-on-surface font-semibold">Shipping &amp; Returns</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-4 font-body text-sm text-on-surface-variant leading-relaxed">
+<p>Complimentary express shipping on all orders. Returns are accepted within 30 days of delivery. Items must be unworn with original tags attached.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="w-full py-16 px-8 mt-auto bg-stone-100 tonal-shift from-surface to-surface-container-low">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<!-- Brand & Copyright -->
+<div class="flex flex-col space-y-6">
+<span class="font-epilogue font-bold text-lg text-neutral-900 font-headline">ATELIER</span>
+<p class="font-manrope text-sm tracking-wide text-neutral-500 font-body">© 2024 DIGITAL ATELIER. CRAFTED FOR THE MODERN CANVAS.</p>
+</div>
+<!-- Links -->
+<div class="flex flex-col space-y-4">
+<a class="text-neutral-500 hover:text-neutral-900 font-manrope text-sm tracking-wide underline-offset-4 decoration-orange-800/30 hover:underline transition-opacity" href="#">Sustainability</a>
+<a class="text-neutral-500 hover:text-neutral-900 font-manrope text-sm tracking-wide underline-offset-4 decoration-orange-800/30 hover:underline transition-opacity" href="#">Shipping &amp; Returns</a>
+<a class="text-neutral-500 hover:text-neutral-900 font-manrope text-sm tracking-wide underline-offset-4 decoration-orange-800/30 hover:underline transition-opacity" href="#">Store Locator</a>
+<a class="text-neutral-500 hover:text-neutral-900 font-manrope text-sm tracking-wide underline-offset-4 decoration-orange-800/30 hover:underline transition-opacity" href="#">Privacy</a>
+<a class="text-neutral-500 hover:text-neutral-900 font-manrope text-sm tracking-wide underline-offset-4 decoration-orange-800/30 hover:underline transition-opacity" href="#">Journal</a>
+</div>
+<!-- Newsletter placeholder to fill grid -->
+<div class="lg:col-span-2 flex flex-col space-y-4">
+<span class="font-label uppercase tracking-wider text-sm text-neutral-900 font-semibold">Join the Canvas</span>
+<div class="flex border-b border-outline-variant/50 focus-within:border-primary transition-colors pb-2">
+<input class="bg-transparent border-none outline-none flex-grow font-body text-sm text-neutral-900 placeholder:text-neutral-400 focus:ring-0 px-0" placeholder="Email Address" type="email"/>
+<button class="font-label text-sm uppercase tracking-wider text-primary hover:text-primary-container transition-colors">Subscribe</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

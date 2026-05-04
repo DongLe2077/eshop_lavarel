@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - ATELIER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e5e2e1",
+                        "outline-variant": "#dcc0ba",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffdad3",
+                        "on-surface-variant": "#56423e",
+                        "tertiary-fixed": "#8ef4e4",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "on-tertiary-container": "#f4fffb",
+                        "secondary": "#835146",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#683a30",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#bb5640",
+                        "outline": "#89726d",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#9e412d",
+                        "tertiary-container": "#008377",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#7a493f",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-primary": "#ffb4a4",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#71d8c9",
+                        "on-error": "#ffffff",
+                        "primary": "#9b3f2b",
+                        "on-primary-fixed-variant": "#7f2a18",
+                        "secondary-fixed-dim": "#f8b7a9",
+                        "surface-container-high": "#eae7e7",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "on-primary-fixed": "#3e0500",
+                        "tertiary": "#00685e",
+                        "background": "#fcf9f8",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#ffdad3",
+                        "on-secondary-fixed": "#341109",
+                        "secondary-container": "#febcae",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue", "sans-serif"],
+                        "body": ["Manrope", "sans-serif"],
+                        "label": ["Manrope", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        h1, h2, h3, h4, h5, h6, .font-headline { font-family: 'Epilogue', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen antialiased">
+<main class="min-h-screen flex flex-col lg:flex-row">
+<!-- Left Side Image -->
+<div class="hidden lg:block lg:w-1/2 relative overflow-hidden bg-surface-container-high">
+<img alt="High-end fashion editorial backstage with models blurred in motion, soft natural lighting, warm terracotta undertones, subtle grain texture" class="w-full h-full object-cover opacity-90 mix-blend-multiply" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMv-prh0BGTrgYzRs_6fX6CoVqq1vCCNlvkxoFnewsWJk1QP9iYQwlHUH_UBDiOyDl5f2UR5tUyIRGWY1lPEg5-rx-q9DmL90mzGDlJkexebRJsiQFuQfcOSnylvLl5fygVrqrSA467H2Mj_PdDRjPosZpP4Vd9uKr7vsk3jpX6LRP24UE8Ae8emdi2BKw1qN03Tj-H_GKppXaIXM1vVlwTUxO0nv4SC0nYrnjpTHo4eJ70uD-pWHMThWYe4q3oNA4yL1wR_76R_vg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+</div>
+<!-- Right Side Form -->
+<div class="flex-grow lg:w-1/2 flex items-center justify-center p-8 sm:p-12 lg:p-24 relative bg-surface">
+<div class="relative z-10 w-full max-w-md">
+<div class="mb-12">
+<a class="inline-block" href="#">
+<span class="text-3xl font-bold tracking-tighter text-on-surface font-headline uppercase">ATELIER</span>
+</a>
+<p class="mt-3 text-on-surface-variant font-body text-sm tracking-wide">Enter your personal canvas.</p>
+</div>
+<div class="mb-10">
+<h1 class="text-4xl font-headline font-bold text-on-surface tracking-tight">Sign In</h1>
+</div>
+<form action="#" class="space-y-8" method="POST">
+<div class="space-y-2 relative group">
+<label class="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors" for="email">Email Address</label>
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/60 px-0 py-3 text-on-surface font-body text-base focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" id="email" name="email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-2 relative group">
+<div class="flex justify-between items-end mb-2">
+<label class="block text-xs font-label uppercase tracking-widest text-on-surface-variant group-focus-within:text-primary transition-colors" for="password">Password</label>
+<a class="text-xs font-label text-primary hover:text-primary-container transition-all duration-300 uppercase tracking-widest relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform hover:after:scale-x-100 hover:after:origin-bottom-left" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/60 px-0 py-3 text-on-surface font-body text-base focus:ring-0 focus:border-primary transition-colors placeholder:text-outline-variant/40" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+<button class="absolute right-0 top-1/2 -translate-y-1/2 text-outline-variant hover:text-on-surface transition-colors p-2" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="pt-6">
+<button class="w-full bg-primary text-on-primary py-4 px-8 font-label text-sm uppercase tracking-widest hover:bg-primary-container hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-3" type="submit">
+                            Login
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</form>
+<div class="mt-12">
+<p class="text-sm font-body text-on-surface-variant">
+                        New to Atelier? 
+                        <a class="text-primary hover:text-primary-container font-semibold transition-all duration-300 ml-1 relative after:content-[''] after:absolute after:w-full after:scale-x-100 after:h-[1px] after:bottom-0 after:left-0 after:bg-primary/30 after:transition-transform hover:after:bg-primary" href="#">Create an account</a>
+</p>
+</div>
+<div class="mt-16">
+<p class="text-xs font-label text-on-surface-variant uppercase tracking-widest opacity-50">
+                    © 2024 DIGITAL ATELIER
+                </p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

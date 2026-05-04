@@ -1,0 +1,88 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
+
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+    ],
+
+    theme: {
+        extend: {
+            colors: {
+                "surface-variant": "#EAE9E6",
+                "outline-variant": "#D1CFCA",
+                "surface-container-highest": "#EAE9E6",
+                "primary-fixed": "#D1D1D1",
+                "on-surface-variant": "#4A4947",
+                "tertiary-fixed": "#E5D1B8",
+                "primary-fixed-dim": "#A3A3A3",
+                "on-tertiary-container": "#2A1D0E",
+                "secondary": "#7E6B5A",
+                "on-tertiary-fixed": "#1A1005",
+                "on-tertiary-fixed-variant": "#3D2C1A",
+                "on-secondary-fixed-variant": "#4E3E34",
+                "surface-container-lowest": "#FFFFFF",
+                "on-surface": "#1A1A1A",
+                "on-tertiary": "#FFFFFF",
+                "primary-container": "#262626",
+                "outline": "#797775",
+                "surface": "#FAF9F6",
+                "surface-tint": "#1A1A1A",
+                "tertiary-container": "#C5A059",
+                "on-primary": "#FFFFFF",
+                "on-secondary-container": "#4E3E34",
+                "surface-bright": "#FAF9F6",
+                "inverse-primary": "#D1D1D1",
+                "surface-dim": "#DEDDD9",
+                "tertiary-fixed-dim": "#C5A059",
+                "on-error": "#ffffff",
+                "primary": "#111111",
+                "on-primary-fixed-variant": "#333333",
+                "secondary-fixed-dim": "#D1C7BC",
+                "surface-container-high": "#F0EFEA",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "surface-container": "#F5F4EF",
+                "on-secondary": "#ffffff",
+                "inverse-surface": "#2F2F2F",
+                "on-primary-fixed": "#000000",
+                "tertiary": "#C5A059",
+                "background": "#FAF9F6",
+                "on-primary-container": "#ffffff",
+                "surface-container-low": "#FAF9F4",
+                "secondary-fixed": "#E7E1D8",
+                "on-secondary-fixed": "#241A14",
+                "secondary-container": "#F2F0EB",
+                "inverse-on-surface": "#F2F1ED",
+                "error": "#B00020",
+                "on-background": "#1A1A1A",
+                // Luxury Accents
+                "accent-gold": "#D4AF37",
+                "accent-amber": "#FFBF00",
+                "luxury-dark": "#0A0A0A",
+            },
+            backgroundImage: {
+                'gold-gradient': "linear-gradient(135deg, #D4AF37 0%, #F1D37E 50%, #B8860B 100%)",
+                'dark-gradient': "linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0.8) 100%)",
+            },
+            borderRadius: {
+                DEFAULT: "0",
+                lg: "0",
+                xl: "0.125rem",
+                full: "9999px",
+            },
+            fontFamily: {
+                headline: ["'Playfair Display'", "serif"],
+                body: ["Inter", "sans-serif"],
+                label: ["Inter", "sans-serif"],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                serif: ['Playfair Display', ...defaultTheme.fontFamily.serif],
+            },
+        },
+    },
+
+    plugins: [forms],
+};

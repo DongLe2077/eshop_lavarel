@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - ATELIER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;800&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e5e2e1",
+                        "outline-variant": "#dcc0ba",
+                        "surface-container-highest": "#e5e2e1",
+                        "primary-fixed": "#ffdad3",
+                        "on-surface-variant": "#56423e",
+                        "tertiary-fixed": "#8ef4e4",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "on-tertiary-container": "#f4fffb",
+                        "secondary": "#835146",
+                        "on-tertiary-fixed": "#00201c",
+                        "on-tertiary-fixed-variant": "#005048",
+                        "on-secondary-fixed-variant": "#683a30",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#bb5640",
+                        "outline": "#89726d",
+                        "surface": "#fcf9f8",
+                        "surface-tint": "#9e412d",
+                        "tertiary-container": "#008377",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#7a493f",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-primary": "#ffb4a4",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed-dim": "#71d8c9",
+                        "on-error": "#ffffff",
+                        "primary": "#9b3f2b",
+                        "on-primary-fixed-variant": "#7f2a18",
+                        "secondary-fixed-dim": "#f8b7a9",
+                        "surface-container-high": "#eae7e7",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eded",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "on-primary-fixed": "#3e0500",
+                        "tertiary": "#00685e",
+                        "background": "#fcf9f8",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-low": "#f6f3f2",
+                        "secondary-fixed": "#ffdad3",
+                        "on-secondary-fixed": "#341109",
+                        "secondary-container": "#febcae",
+                        "inverse-on-surface": "#f3f0ef",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c1c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar (Suppressed for Checkout Intent per guidelines) -->
+<!-- Checkout headers should be minimal, focusing on the task. Using a simplified brand header instead of full nav. -->
+<header class="w-full py-6 px-8 flex justify-center items-center bg-surface-container-lowest z-50">
+<div class="text-2xl font-bold tracking-tighter text-on-surface font-headline">ATELIER</div>
+<div class="absolute right-8 flex items-center gap-2 text-on-surface-variant font-label text-sm uppercase tracking-wider">
+<span class="material-symbols-outlined" style="font-size: 1.25rem;">lock</span>
+            Secure Checkout
+        </div>
+</header>
+<!-- Main Checkout Canvas -->
+<main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+<!-- Left Column: Checkout Steps -->
+<div class="lg:col-span-7 space-y-16">
+<!-- Breadcrumb / Steps -->
+<nav aria-label="Progress" class="mb-12">
+<ol class="flex items-center space-x-2 text-sm font-label uppercase tracking-widest" role="list">
+<li>
+<span class="text-primary font-semibold">Information</span>
+</li>
+<li>
+<span class="material-symbols-outlined text-outline-variant text-sm px-2">chevron_right</span>
+</li>
+<li>
+<span class="text-on-surface-variant">Shipping</span>
+</li>
+<li>
+<span class="material-symbols-outlined text-outline-variant text-sm px-2">chevron_right</span>
+</li>
+<li>
+<span class="text-on-surface-variant">Payment</span>
+</li>
+</ol>
+</nav>
+<!-- Express Checkout (Bento Grid Style) -->
+<section class="space-y-6">
+<h2 class="font-headline text-xl text-on-surface tracking-tight">Express Checkout</h2>
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-surface-container-lowest py-4 px-6 rounded flex items-center justify-center gap-3 hover:bg-surface-container transition-colors shadow-[0_24px_48px_rgba(27,28,28,0.02)]">
+<span class="font-headline font-bold text-lg">ShopPay</span>
+</button>
+<button class="bg-[#FFC439] py-4 px-6 rounded flex items-center justify-center gap-3 hover:opacity-90 transition-opacity shadow-[0_24px_48px_rgba(27,28,28,0.02)]">
+<span class="font-headline font-bold text-lg italic text-[#003087]">PayPal</span>
+</button>
+</div>
+<div class="relative flex py-8 items-center">
+<div class="flex-grow border-t border-outline-variant/30"></div>
+<span class="flex-shrink-0 mx-4 text-on-surface-variant text-sm font-label uppercase tracking-widest">Or continue below</span>
+<div class="flex-grow border-t border-outline-variant/30"></div>
+</div>
+</section>
+<!-- Step 1: Contact Information -->
+<section class="space-y-8 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_rgba(27,28,28,0.04)]">
+<div class="flex justify-between items-end">
+<h2 class="font-headline text-2xl text-on-surface tracking-tight">Contact</h2>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-primary underline underline-offset-4 decoration-outline-variant/30" href="#">Log in</a>
+</div>
+<div class="space-y-6">
+<div class="relative">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="email" placeholder=" " type="email"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="email">Email Address</label>
+</div>
+<label class="flex items-center space-x-3 cursor-pointer">
+<input class="form-checkbox h-4 w-4 text-primary bg-transparent border-outline-variant rounded-sm focus:ring-primary focus:ring-offset-surface-container-lowest" type="checkbox"/>
+<span class="text-sm text-on-surface-variant">Email me with news and offers</span>
+</label>
+</div>
+</section>
+<!-- Step 2: Shipping Address -->
+<section class="space-y-8 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_rgba(27,28,28,0.04)]">
+<h2 class="font-headline text-2xl text-on-surface tracking-tight">Shipping address</h2>
+<div class="space-y-6">
+<div class="relative">
+<select class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface cursor-pointer font-body" id="country">
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="CA">Canada</option>
+</select>
+<label class="absolute text-on-surface-variant transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] font-label uppercase tracking-wider text-xs" for="country">Country/Region</label>
+<span class="material-symbols-outlined absolute right-0 top-3 text-outline-variant pointer-events-none">expand_more</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="relative">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="first_name" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="first_name">First Name</label>
+</div>
+<div class="relative">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="last_name" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="last_name">Last Name</label>
+</div>
+</div>
+<div class="relative">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="address" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="address">Address</label>
+</div>
+<div class="relative">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="apartment" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="apartment">Apartment, suite, etc. (optional)</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative md:col-span-1">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="city" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="city">City</label>
+</div>
+<div class="relative md:col-span-1">
+<select class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface cursor-pointer font-body" id="state">
+<option disabled="" selected="" value=""></option>
+<option value="NY">New York</option>
+<option value="CA">California</option>
+<option value="TX">Texas</option>
+</select>
+<label class="absolute text-on-surface-variant transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] font-label uppercase tracking-wider text-xs" for="state">State</label>
+<span class="material-symbols-outlined absolute right-0 top-3 text-outline-variant pointer-events-none">expand_more</span>
+</div>
+<div class="relative md:col-span-1">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="zip" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="zip">ZIP Code</label>
+</div>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full md:w-auto px-10 py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label uppercase tracking-widest text-sm rounded shadow-sm hover:opacity-90 transition-opacity">
+                        Continue to Shipping
+                    </button>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary -->
+<div class="lg:col-span-5 relative">
+<!-- Sticky Summary Card -->
+<div class="sticky top-12 bg-surface-container-low p-8 rounded-lg">
+<h2 class="font-headline text-xl text-on-surface tracking-tight mb-8">Order Summary</h2>
+<!-- Product List -->
+<div class="space-y-6 mb-8">
+<!-- Item 1 -->
+<div class="flex items-center gap-6">
+<div class="relative w-20 h-24 bg-surface-variant flex-shrink-0 rounded overflow-hidden">
+<img alt="minimalist linen blazer in muted earth tones on light background" class="w-full h-full object-cover" data-alt="minimalist linen blazer in muted earth tones on light background, soft natural lighting, high end editorial fashion photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Nvr6rcU7P7_ZFx3P6shd222ZtFAiMXmBCQBENRaDp59dwX24UK7ceIpcFy5EFore45GSkI0EvO1cp9HrGUa_rydlU7fWpqko7IqTpKtLz1nstWDoYsACU4AOcwc4Sg1dOSCj5tInnlpXawatvQpwNwkwuxCxPeAB7nnJ68aagKLHSA_NMXs_a_z8KGjTBoYuuNAPK8osnk_ugA1eWtbnVXYfZ03wKIg0j7mpb4hWfgkjpuqdFUH4Rou5sGZ12IoFGlsfpG6ZCXua"/>
+<span class="absolute -top-2 -right-2 bg-on-surface text-surface w-6 h-6 flex items-center justify-center rounded-full text-xs font-label z-10">1</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-base text-on-surface">The Linen Blazer</h3>
+<p class="text-sm text-on-surface-variant mt-1">Oat / M</p>
+</div>
+<div class="text-right">
+<p class="font-body text-base text-on-surface">$295.00</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-6">
+<div class="relative w-20 h-24 bg-surface-variant flex-shrink-0 rounded overflow-hidden">
+<img alt="sleek leather tote bag in warm brown tone, sharp lighting" class="w-full h-full object-cover" data-alt="sleek premium leather tote bag in warm cognac brown tone, minimalist setting, sharp directional lighting, luxury fashion accessory" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB6TiR7bRsO7GM7rkeFMbtPF_hkt9ZPh5EURI3xQ7wDIsUGOCxF3qIj3pDE-xxlf7LkXnlvaJlKSXUhzMGWGk2b4ZVSO5Ffl1NXraJ149SrUIOIaySI4VYlPPRBbQ5Z5claFJa8ONCngTGr4n_OHdYSNCOLD0LJUsUqD8lfLkygL8NJ4Hq_tLaUBWRkJbsnQwqF_o3dhbNRHqkO53oaIKWYOKClno3M_H7oWowqpK7CiBALibCeML7bAGn85H2PP4VVPdRLQ970HH_"/>
+<span class="absolute -top-2 -right-2 bg-on-surface text-surface w-6 h-6 flex items-center justify-center rounded-full text-xs font-label z-10">1</span>
+</div>
+<div class="flex-grow">
+<h3 class="font-headline text-base text-on-surface">Everyday Leather Tote</h3>
+<p class="text-sm text-on-surface-variant mt-1">Cognac</p>
+</div>
+<div class="text-right">
+<p class="font-body text-base text-on-surface">$450.00</p>
+</div>
+</div>
+</div>
+<!-- Discount Code -->
+<div class="flex gap-4 mb-8">
+<div class="relative flex-grow">
+<input class="block w-full px-0 py-3 bg-transparent border-0 border-b border-outline-variant/50 appearance-none focus:outline-none focus:ring-0 focus:border-primary peer text-on-surface" id="discount" placeholder=" " type="text"/>
+<label class="absolute text-on-surface-variant duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-primary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 font-label uppercase tracking-wider text-xs" for="discount">Gift card or discount code</label>
+</div>
+<button class="px-6 py-3 border border-outline-variant/20 text-on-surface font-label uppercase tracking-widest text-xs rounded hover:bg-surface-container-highest transition-colors">Apply</button>
+</div>
+<!-- Totals -->
+<div class="space-y-4 pt-6 border-t border-outline-variant/20 text-sm font-body">
+<div class="flex justify-between items-center text-on-surface-variant">
+<p>Subtotal</p>
+<p>$745.00</p>
+</div>
+<div class="flex justify-between items-center text-on-surface-variant">
+<p>Shipping</p>
+<p class="text-xs uppercase tracking-wider">Calculated next step</p>
+</div>
+<div class="flex justify-between items-center pt-6 text-on-surface font-headline text-xl">
+<p>Total</p>
+<p>
+<span class="text-xs text-on-surface-variant font-label uppercase tracking-widest mr-2 font-normal">USD</span>
+                            $745.00
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Minimal for Checkout) -->
+<footer class="w-full py-16 px-8 mt-auto bg-stone-100 dark:bg-neutral-950">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2 lg:col-span-4 flex flex-col items-center justify-center space-y-4">
+<div class="font-epilogue font-bold text-lg text-neutral-900 dark:text-stone-50">ATELIER</div>
+<div class="font-manrope text-sm tracking-wide text-neutral-500 dark:text-neutral-400">© 2024 DIGITAL ATELIER. CRAFTED FOR THE MODERN CANVAS.</div>
+<div class="flex gap-6 mt-4">
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-primary underline underline-offset-4 decoration-outline-variant/30" href="#">Refund Policy</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-primary underline underline-offset-4 decoration-outline-variant/30" href="#">Privacy Policy</a>
+<a class="text-sm font-label uppercase tracking-widest text-on-surface-variant hover:text-primary underline underline-offset-4 decoration-outline-variant/30" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
