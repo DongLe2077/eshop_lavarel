@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class AnalyticsController extends Controller
 {
-    private string $analyticsBaseUrl = 'http://127.0.0.1:5000';
+    private string $analyticsBaseUrl;
+
+    public function __construct()
+    {
+        $this->analyticsBaseUrl = env('ANALYTICS_URL', 'http://127.0.0.1:5000');
+    }
 
     public function index()
     {

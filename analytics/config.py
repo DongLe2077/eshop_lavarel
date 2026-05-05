@@ -21,6 +21,6 @@ DB_PASSWORD = os.getenv('DB_PASSWORD', '')
 SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_DATABASE}?charset=utf8mb4"
 
 # Flask config
-FLASK_HOST = '127.0.0.1'
-FLASK_PORT = 5000
-FLASK_DEBUG = True
+FLASK_HOST = os.getenv('FLASK_HOST', '127.0.0.1')
+FLASK_PORT = int(os.getenv('FLASK_PORT', '5000'))
+FLASK_DEBUG = os.getenv('FLASK_DEBUG', 'true').lower() == 'true'
