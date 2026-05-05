@@ -1,7 +1,7 @@
 {{-- Trang Danh Sách Sản Phẩm - Trích xuất từ Stitch UI "search.html" --}}
 @extends('layouts.app')
 
-@section('title', 'Sản Phẩm - Zest Outfit')
+@section('title', 'Sản Phẩm - FashionGZ')
 
 @section('content')
     <section class="py-12 px-4 sm:px-8 max-w-7xl mx-auto w-full flex flex-col gap-16">
@@ -204,3 +204,4 @@
         });
     </script>
 @endsection
+

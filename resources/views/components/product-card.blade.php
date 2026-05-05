@@ -40,3 +40,4 @@
         <p class="font-label text-[9px] uppercase tracking-[0.2em] text-on-surface-variant/60">{{ $product->category->name ?? 'Collection' }}</p>
     </div>
 </div>
+

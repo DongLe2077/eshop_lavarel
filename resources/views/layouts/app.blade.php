@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>@yield('title', 'Zest Outfit - Thời trang cao cấp')</title>
-    <meta name="description" content="@yield('meta_description', 'Zest Outfit - Thời trang cao cấp, phong cách cá tính và hiện đại.')">
+    <title>@yield('title', 'FashionGZ - Thời trang cao cấp')</title>
+    <meta name="description" content="@yield('meta_description', 'FashionGZ - Thời trang cao cấp, phong cách cá tính và hiện đại.')">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
@@ -189,3 +189,4 @@
     @stack('scripts')
 </body>
 </html>
+

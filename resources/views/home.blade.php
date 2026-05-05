@@ -1,7 +1,7 @@
 {{-- Trang Chủ - Editorial Mosaic Redesign --}}
 @extends('layouts.app')
 
-@section('title', 'Zest Outfit - Thời trang cao cấp')
+@section('title', 'FashionGZ - Thời trang cao cấp')
 
 @section('content')
     {{-- Categories Mapping --}}
@@ -48,7 +48,7 @@
                     </div>
                 @empty
                     <div class="swiper-slide relative bg-luxury-dark flex items-center justify-center">
-                        <h2 class="text-white font-headline text-5xl italic tracking-tighter">ZEST OUTFIT</h2>
+                        <h2 class="text-white font-headline text-5xl italic tracking-tighter">FashionGZ</h2>
                     </div>
                 @endforelse
             </div>
@@ -153,3 +153,4 @@
     });
 </script>
 @endpush
+

@@ -1,7 +1,7 @@
 {{-- Trang Chi Tiết Sản Phẩm - Luxury Redesign --}}
 @extends('layouts.app')
 
-@section('title', $product->name . ' - Zest Outfit')
+@section('title', $product->name . ' - FashionGZ')
 
 @section('content')
     <section class="bg-white min-h-screen">
@@ -264,3 +264,4 @@
         });
     </script>
 @endsection
+

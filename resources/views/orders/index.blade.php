@@ -1,7 +1,7 @@
 {{-- Trang Đơn Hàng --}}
 @extends('layouts.app')
 
-@section('title', 'Đơn Hàng Của Tôi - Zest Outfit')
+@section('title', 'Đơn Hàng Của Tôi - FashionGZ')
 
 @section('content')
     <section class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="flex-grow text-center md:text-left relative z-10">
                     <h2 class="font-headline text-2xl font-bold text-on-surface mb-2">Đặt Hàng Thành Công!</h2>
-                    <p class="font-body text-on-surface-variant mb-4">Cảm ơn bạn đã tin tưởng Zest Outfit. Đơn hàng của bạn đang được chúng tôi xử lý cẩn thận.</p>
+                    <p class="font-body text-on-surface-variant mb-4">Cảm ơn bạn đã tin tưởng FashionGZ. Đơn hàng của bạn đang được chúng tôi xử lý cẩn thận.</p>
                     <div class="inline-flex items-center gap-2 bg-tertiary/10 text-tertiary px-4 py-1.5 rounded-full font-label text-[10px] uppercase tracking-widest font-bold">
                         {{ session('success') }}
                     </div>
@@ -101,3 +101,4 @@
         @endforelse
     </section>
 @endsection
+

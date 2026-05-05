@@ -294,3 +294,4 @@ new Chart(e,{type:'bar',data:{labels:all,datasets:[{label:'Thực tế',data:d1,
 @endif
 </script>
 @endsection
+

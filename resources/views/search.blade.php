@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Tìm kiếm - Zest Outfit')
+@section('title', 'Tìm kiếm - FashionGZ')
 
 @section('content')
 <div class="bg-surface flex flex-col min-h-screen">
@@ -171,3 +171,4 @@
     });
 </script>
 @endsection
+

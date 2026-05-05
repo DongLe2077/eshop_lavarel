@@ -1,7 +1,7 @@
 {{-- Trang Đăng Ký - Trích xuất từ Stitch UI "register.html" --}}
 @extends('layouts.app')
 
-@section('title', 'Đăng Ký - Zest Outfit')
+@section('title', 'Đăng Ký - FashionGZ')
 
 @section('content')
     <main class="min-h-[calc(100vh)] -mt-[88px] flex flex-col md:flex-row">
@@ -17,7 +17,7 @@
             <!-- Transactional "Back" / Simple Nav -->
             <nav class="absolute top-0 left-0 w-full p-8 flex justify-between items-center z-10 pt-28">
                 <a class="font-headline font-bold text-xl tracking-tighter text-on-surface hover:opacity-70 transition-opacity" href="{{ route('home') }}">
-                    ZEST OUTFIT
+                    FashionGZ
                 </a>
                 <a class="flex items-center gap-2 text-sm font-label font-medium text-on-surface-variant hover:text-primary transition-colors group" href="{{ route('home') }}">
                     <span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_left_alt</span>
@@ -30,7 +30,7 @@
                 <div class="max-w-md w-full mx-auto md:mx-0">
                     <header class="mb-12">
                         <h1 class="font-headline text-[2.5rem] md:text-[3rem] leading-none font-bold tracking-tight text-on-surface mb-4">
-                            Tham gia <br/> Zest Outfit.
+                            Tham gia <br/> FashionGZ.
                         </h1>
                         <p class="font-body text-base text-on-surface-variant leading-relaxed pr-8">
                             Tạo tài khoản để quản lý đơn hàng và truy cập các bộ sưu tập giới hạn độc quyền.
@@ -98,3 +98,4 @@
         </div>
     </main>
 @endsection
+

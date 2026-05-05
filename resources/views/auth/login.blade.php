@@ -1,7 +1,7 @@
 {{-- Trang Đăng Nhập - Trích xuất từ Stitch UI "login.html" --}}
 @extends('layouts.app')
 
-@section('title', 'Đăng Nhập - Zest Outfit')
+@section('title', 'Đăng Nhập - FashionGZ')
 
 @section('content')
     <main class="min-h-[calc(100vh)] -mt-[88px] flex flex-col lg:flex-row">
@@ -16,7 +16,7 @@
             <div class="relative z-10 w-full max-w-md">
                 <div class="mb-12">
                     <a class="inline-block" href="{{ route('home') }}">
-                        <span class="text-3xl font-bold tracking-tighter text-on-surface font-headline uppercase">Zest Outfit</span>
+                        <span class="text-3xl font-bold tracking-tighter text-on-surface font-headline uppercase">FashionGZ</span>
                     </a>
                     <p class="mt-3 text-on-surface-variant font-body text-sm tracking-wide">Enter your personal canvas.</p>
                 </div>
@@ -75,10 +75,11 @@
 
                 <div class="mt-16">
                     <p class="text-xs font-label text-on-surface-variant uppercase tracking-widest opacity-50">
-                        © 2024 ZEST OUTFIT
+                        © 2024 FashionGZ
                     </p>
                 </div>
             </div>
         </div>
     </main>
 @endsection
+

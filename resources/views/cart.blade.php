@@ -1,7 +1,7 @@
 {{-- Trang Giỏ Hàng - Trích xuất từ Stitch UI "cart.html" --}}
 @extends('layouts.app')
 
-@section('title', 'Giỏ Hàng - Zest Outfit')
+@section('title', 'Giỏ Hàng - FashionGZ')
 
 @section('content')
     <section class="max-w-7xl mx-auto px-4 sm:px-8 py-12">
@@ -114,3 +114,4 @@
         @endif
     </section>
 @endsection
+

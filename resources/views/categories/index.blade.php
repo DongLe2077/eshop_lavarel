@@ -1,7 +1,7 @@
 {{-- Trang Danh Mục - Trích xuất từ Stitch UI "category.html" --}}
 @extends('layouts.app')
 
-@section('title', 'Danh Mục - Zest Outfit')
+@section('title', 'Danh Mục - FashionGZ')
 
 @section('content')
     <section class="py-12 px-4 sm:px-8 max-w-7xl mx-auto">
@@ -57,3 +57,4 @@
         </div>
     </section>
 @endsection
+
