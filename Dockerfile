@@ -33,11 +33,11 @@ COPY . .
 # Cài đặt PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Cài đặt Node.js và npm để build assets (nếu cần)
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get install -y nodesource-release-nodistro-1.gpg && \
-    apt-get update && \
+# Cài đặt Node.js 18 và npm để build assets
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh && \
+    bash nodesource_setup.sh && \
     apt-get install -y nodejs && \
+    rm nodesource_setup.sh && \
     npm install && \
     npm run build
 
