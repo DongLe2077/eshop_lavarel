@@ -3,9 +3,9 @@
     <nav aria-label="Main Navigation" class="flex justify-between items-center px-8 lg:px-12 py-5 max-w-full mx-auto transition-all duration-500">
         {{-- Brand Logo --}}
         <div class="flex-shrink-0">
-            <a aria-label="Zest Outfit Home" class="flex items-center gap-3" href="{{ route('home') }}">
-                <span class="text-2xl font-bold tracking-[-0.05em] text-neutral-900 font-headline">Zest</span>
-                <span class="text-2xl font-light tracking-[-0.05em] text-neutral-900 font-headline">Outfit</span>
+            <a aria-label="FashionGZ Home" class="flex items-center gap-3" href="{{ route('home') }}">
+                <span class="text-2xl font-bold tracking-[-0.05em] text-neutral-900 font-headline">Fashion</span>
+                <span class="text-2xl font-light tracking-[-0.05em] text-neutral-900 font-headline">GZ</span>
             </a>
         </div>
 

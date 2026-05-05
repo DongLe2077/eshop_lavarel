@@ -47,8 +47,8 @@
         {{-- Brand --}}
         <div class="flex flex-col space-y-6 lg:col-span-1">
             <div class="flex items-center gap-2">
-                <span class="font-headline font-bold text-xl text-white tracking-[-0.05em]">Zest</span>
-                <span class="font-headline font-light text-xl text-white tracking-[-0.05em]">Outfit</span>
+                <span class="font-headline font-bold text-xl text-white tracking-[-0.05em]">Fashion</span>
+                <span class="font-headline font-light text-xl text-white tracking-[-0.05em]">GZ</span>
             </div>
             <p class="font-body text-sm text-white/30 leading-relaxed">
                 Thời trang cao cấp cho những ai trân trọng sự tinh tế trong từng đường nét.
@@ -86,7 +86,7 @@
     </div>
 
     <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-        <span class="font-label text-[10px] text-white/20 uppercase tracking-[0.3em]">© {{ date('Y') }} Zest Outfit. All rights reserved.</span>
+        <span class="font-label text-[10px] text-white/20 uppercase tracking-[0.3em]">© {{ date('Y') }} FashionGZ. All rights reserved.</span>
         <div class="flex items-center gap-1">
             <span class="font-label text-[10px] text-white/20 uppercase tracking-[0.2em]">Crafted with</span>
             <span class="text-accent-gold text-sm">✦</span>

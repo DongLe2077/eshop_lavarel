@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - EShop</title>
+    <title>Admin Dashboard - FashionGZ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -32,7 +32,7 @@
                 <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
                     <i class="fas fa-shopping-bag fa-lg"></i>
                 </div>
-                <span class="text-xl font-bold tracking-tight">EShop Admin</span>
+                <span class="text-xl font-bold tracking-tight">FashionGZ Admin</span>
             </div>
 
             <nav class="flex-1 px-4 space-y-1 overflow-y-auto mt-4">
