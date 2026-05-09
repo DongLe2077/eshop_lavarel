@@ -71,6 +71,12 @@ class AnalyticsController extends Controller
     private function callApi(string $endpoint): ?array
     {
         $response = Http::timeout(15)->get($this->analyticsBaseUrl . $endpoint);
-        return $response->successful() ? $response->json() : null;
+        
+        // Nếu HTTP status là 4xx hoặc 5xx (ví dụ: 503 do dịch vụ ngủ đông, 500 do lỗi DB)
+        if ($response->failed()) {
+            throw new \Exception("Analytics service error: " . $response->status());
+        }
+        
+        return $response->json();
     }
 }
