@@ -17,61 +17,64 @@
         $defaultCatImage = 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&q=80';
     @endphp
 
-    {{-- Hero Slider Section --}}
-    <section class="relative w-full h-[800px] bg-luxury-dark overflow-hidden">
+    {{-- Hero Slider Section: Split Screen 50/50 --}}
+    <section class="relative w-full h-[750px] md:h-[850px] bg-white overflow-hidden border-b border-stone-100">
         <div class="swiper heroSwiper w-full h-full">
             <div class="swiper-wrapper">
                 @forelse($featuredProducts as $fProduct)
-                    <div class="swiper-slide relative flex items-center justify-center">
-                        {{-- Blurred Background Layer --}}
-                        <div class="absolute inset-0 overflow-hidden">
-                            <img alt="background-{{ $fProduct->name }}"
-                                 class="w-full h-full object-cover object-center blur-2xl opacity-40 scale-125 transition-transform duration-[20s]"
-                                 src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80' }}"/>
-                            <div class="absolute inset-0 bg-gradient-to-r from-luxury-dark/90 via-luxury-dark/70 to-luxury-dark/30"></div>
-                        </div>
-
-                        {{-- Main Content & Product Image Layer --}}
-                        <div class="relative z-10 w-full max-w-7xl mx-auto px-8 h-full flex flex-col md:flex-row items-center justify-between gap-12 py-20">
-                            {{-- Text Content --}}
-                            <div class="w-full md:w-1/2 flex flex-col justify-center">
-                                <span class="font-label text-[10px] tracking-[0.5em] text-accent-gold uppercase block mb-6 font-bold drop-shadow-md">L'EXCELLENCE</span>
-                                <h1 class="font-headline text-[4rem] md:text-[6rem] lg:text-[7rem] leading-[0.9] tracking-[-0.03em] text-white font-extrabold mb-8 drop-shadow-2xl line-clamp-3">
+                    <div class="swiper-slide w-full h-full flex flex-col md:flex-row">
+                        {{-- Left Side: Minimalist Text Content --}}
+                        <div class="w-full md:w-1/2 h-1/2 md:h-full flex items-center justify-center p-10 lg:p-24 bg-[#FBF9F6]">
+                            <div class="max-w-xl w-full flex flex-col justify-center">
+                                <span class="font-label text-[11px] tracking-[0.4em] text-stone-500 uppercase font-bold mb-6 flex items-center gap-4">
+                                    <span class="w-8 h-px bg-stone-400"></span>
+                                    Mới Nhất / {{ $fProduct->category->name ?? 'Collection' }}
+                                </span>
+                                
+                                <h1 class="font-headline text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95] text-luxury-dark font-black mb-8 tracking-tighter">
                                     {{ $fProduct->name }}
                                 </h1>
-                                <div class="flex items-center gap-8 mt-4">
-                                    <a class="btn-luxury group" href="{{ route('products.show', $fProduct) }}">
-                                        <span class="flex items-center gap-2">Xem Chi Tiết <span class="material-symbols-outlined text-sm">arrow_outward</span></span>
+                                
+                                <p class="font-body text-lg md:text-xl text-stone-500 font-light mb-12 italic border-l-2 border-accent-gold pl-6 opacity-80">
+                                    Sự kết hợp hoàn hảo giữa phong cách đương đại và chất lượng thủ công tuyệt mỹ. Khẳng định đẳng cấp cá nhân.
+                                </p>
+                                
+                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-8 mt-auto">
+                                    <span class="font-headline text-3xl md:text-4xl text-luxury-dark font-bold">
+                                        {{ $fProduct->formatted_price }}
+                                    </span>
+                                    <a class="btn-luxury !bg-luxury-dark !text-white hover:!bg-accent-gold !py-4 !px-8 flex items-center justify-center gap-3 transition-colors shadow-xl" href="{{ route('products.show', $fProduct) }}">
+                                        <span class="font-bold tracking-widest text-xs uppercase">Xem Chi Tiết</span>
+                                        <span class="material-symbols-outlined text-sm">trending_flat</span>
                                     </a>
-                                    <div class="h-px w-16 bg-white/20 hidden md:block"></div>
-                                    <span class="font-headline text-2xl md:text-3xl text-accent-gold font-bold drop-shadow-md">{{ $fProduct->formatted_price }}</span>
                                 </div>
                             </div>
+                        </div>
+
+                        {{-- Right Side: Full Bleed Image --}}
+                        <div class="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
+                            <img alt="{{ $fProduct->name }}" 
+                                 class="w-full h-full object-cover object-center transition-transform duration-[15s] ease-out group-hover:scale-110"
+                                 src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80' }}"/>
                             
-                            {{-- Contained Product Image --}}
-                            <div class="w-full md:w-1/2 h-[400px] md:h-[600px] flex items-center justify-center relative group">
-                                <div class="absolute inset-0 bg-white/5 rounded-full blur-3xl scale-75 group-hover:scale-100 transition-transform duration-1000"></div>
-                                <img alt="{{ $fProduct->name }}"
-                                     class="max-w-full max-h-full object-contain object-center drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 z-10"
-                                     src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80' }}"/>
-                            </div>
+                            {{-- Overlay for contrast --}}
+                            <div class="absolute inset-0 bg-luxury-dark/5 group-hover:bg-transparent transition-colors duration-700"></div>
                         </div>
                     </div>
                 @empty
-                    <div class="swiper-slide relative bg-luxury-dark flex items-center justify-center">
-                        <h2 class="text-white font-headline text-5xl italic tracking-tighter">FashionGZ</h2>
+                    <div class="swiper-slide flex items-center justify-center bg-[#FBF9F6] w-full h-full">
+                        <h2 class="text-luxury-dark font-headline text-5xl italic tracking-tighter">FashionGZ</h2>
                     </div>
                 @endforelse
             </div>
-            <div class="swiper-pagination !bottom-12 !left-8 !text-left !w-auto"></div>
             
-            {{-- Navigation Buttons --}}
-            <div class="absolute bottom-12 right-8 lg:right-12 z-20 flex gap-4">
-                <div class="hero-prev w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-luxury-dark transition-all cursor-pointer">
-                    <span class="material-symbols-outlined text-xl">chevron_left</span>
+            {{-- Navigation Buttons (Minimalist style, placed bottom left of right section) --}}
+            <div class="absolute bottom-6 right-6 md:right-auto md:left-[50%] md:bottom-12 z-20 flex gap-4 md:-translate-x-1/2">
+                <div class="hero-prev w-12 h-12 md:w-16 md:h-16 bg-white/90 backdrop-blur-md border border-stone-100 rounded-full flex items-center justify-center text-luxury-dark hover:bg-luxury-dark hover:text-white hover:border-luxury-dark transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
+                    <span class="material-symbols-outlined md:text-2xl">arrow_back</span>
                 </div>
-                <div class="hero-next w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-luxury-dark transition-all cursor-pointer">
-                    <span class="material-symbols-outlined text-xl">chevron_right</span>
+                <div class="hero-next w-12 h-12 md:w-16 md:h-16 bg-white/90 backdrop-blur-md border border-stone-100 rounded-full flex items-center justify-center text-luxury-dark hover:bg-luxury-dark hover:text-white hover:border-luxury-dark transition-all duration-300 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.1)]">
+                    <span class="material-symbols-outlined md:text-2xl">arrow_forward</span>
                 </div>
             </div>
         </div>
