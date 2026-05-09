@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     libzip-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql zip
+    && docker-php-ext-install gd pdo pdo_mysql zip exif bcmath
 
 # Bật mod_rewrite cho Apache (quan trọng cho Laravel)
 RUN a2enmod rewrite
