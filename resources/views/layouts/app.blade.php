@@ -185,6 +185,33 @@
                 showToast('Có lỗi xảy ra, vui lòng thử lại', 'error');
             }
         }
+
+        // Mua ngay (Thêm vào giỏ và chuyển hướng thanh toán)
+        async function buyNow(productId, quantity = 1) {
+            try {
+                const response = await fetch('{{ route('cart.add') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        quantity: quantity
+                    })
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    window.location.href = '{{ route('checkout') }}';
+                }
+            } catch (error) {
+                console.error('Error buying now:', error);
+                showToast('Có lỗi xảy ra, vui lòng thử lại', 'error');
+            }
+        }
     </script>
     @stack('scripts')
 </body>

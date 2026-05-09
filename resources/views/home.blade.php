@@ -22,27 +22,38 @@
         <div class="swiper heroSwiper w-full h-full">
             <div class="swiper-wrapper">
                 @forelse($featuredProducts as $fProduct)
-                    <div class="swiper-slide relative">
-                        <div class="absolute inset-0">
-                            <img alt="{{ $fProduct->name }}"
-                                 class="w-full h-full object-cover object-center opacity-70 transition-transform duration-[15s] scale-110"
+                    <div class="swiper-slide relative flex items-center justify-center">
+                        {{-- Blurred Background Layer --}}
+                        <div class="absolute inset-0 overflow-hidden">
+                            <img alt="background-{{ $fProduct->name }}"
+                                 class="w-full h-full object-cover object-center blur-2xl opacity-40 scale-125 transition-transform duration-[20s]"
                                  src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80' }}"/>
-                            <div class="absolute inset-0 bg-gradient-to-r from-luxury-dark/60 via-transparent to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-r from-luxury-dark/90 via-luxury-dark/70 to-luxury-dark/30"></div>
                         </div>
 
-                        <div class="relative z-10 max-w-7xl mx-auto px-8 h-full flex items-center">
-                            <div class="max-w-3xl">
-                                <span class="font-label text-[10px] tracking-[0.5em] text-accent-gold uppercase block mb-6 animate-fade-in font-bold drop-shadow-md">L'EXCELLENCE</span>
-                                <h1 class="font-headline text-[5rem] md:text-[7rem] leading-[0.85] tracking-[-0.05em] text-white font-extrabold mb-10 drop-shadow-2xl">
+                        {{-- Main Content & Product Image Layer --}}
+                        <div class="relative z-10 w-full max-w-7xl mx-auto px-8 h-full flex flex-col md:flex-row items-center justify-between gap-12 py-20">
+                            {{-- Text Content --}}
+                            <div class="w-full md:w-1/2 flex flex-col justify-center">
+                                <span class="font-label text-[10px] tracking-[0.5em] text-accent-gold uppercase block mb-6 font-bold drop-shadow-md">L'EXCELLENCE</span>
+                                <h1 class="font-headline text-[4rem] md:text-[6rem] lg:text-[7rem] leading-[0.9] tracking-[-0.03em] text-white font-extrabold mb-8 drop-shadow-2xl line-clamp-3">
                                     {{ $fProduct->name }}
                                 </h1>
-                                <div class="flex items-center gap-10">
+                                <div class="flex items-center gap-8 mt-4">
                                     <a class="btn-luxury group" href="{{ route('products.show', $fProduct) }}">
                                         <span class="flex items-center gap-2">Xem Chi Tiết <span class="material-symbols-outlined text-sm">arrow_outward</span></span>
                                     </a>
-                                    <div class="h-px w-20 bg-white/20"></div>
-                                    <span class="font-headline text-2xl text-white/60 italic">{{ $fProduct->formatted_price }}</span>
+                                    <div class="h-px w-16 bg-white/20 hidden md:block"></div>
+                                    <span class="font-headline text-2xl md:text-3xl text-accent-gold font-bold drop-shadow-md">{{ $fProduct->formatted_price }}</span>
                                 </div>
+                            </div>
+                            
+                            {{-- Contained Product Image --}}
+                            <div class="w-full md:w-1/2 h-[400px] md:h-[600px] flex items-center justify-center relative group">
+                                <div class="absolute inset-0 bg-white/5 rounded-full blur-3xl scale-75 group-hover:scale-100 transition-transform duration-1000"></div>
+                                <img alt="{{ $fProduct->name }}"
+                                     class="max-w-full max-h-full object-contain object-center drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 hover:scale-105 z-10"
+                                     src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80' }}"/>
                             </div>
                         </div>
                     </div>
@@ -77,27 +88,47 @@
                href="{{ route('products.index') }}">Xem Tất Cả Sản Phẩm</a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-x-12 gap-y-24">
-            @forelse($products as $index => $product)
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[300px] md:auto-rows-[350px]">
+            @forelse($products->take(5) as $index => $product)
                 @php
-                    // Create an asymmetric rhythm
-                    $span = 'md:col-span-4';
-                    if ($index % 5 == 0) $span = 'md:col-span-7';
-                    if ($index % 5 == 1) $span = 'md:col-span-5';
-                    if ($index % 5 == 2) $span = 'md:col-span-4';
-                    if ($index % 5 == 3) $span = 'md:col-span-4';
-                    if ($index % 5 == 4) $span = 'md:col-span-4';
-                    
-                    // Add vertical offset to some items
-                    $marginTop = ($index % 2 != 0) ? 'md:mt-24' : '';
+                    // Bento Box Layout Logic
+                    $span = 'md:col-span-1 md:row-span-1';
+                    if ($index == 0) {
+                        $span = 'md:col-span-2 md:row-span-2'; // Thẻ lớn nhất ở bên trái
+                    }
                 @endphp
                 
-                <div class="{{ $span }} {{ $marginTop }}">
-                    <x-product-card :product="$product" :featured="$index % 5 == 0" />
+                <div class="{{ $span }} group relative rounded-[2rem] overflow-hidden bg-stone-100 border border-stone-200/50 hover:shadow-2xl transition-all duration-500 flex flex-col">
+                    <img src="{{ $product->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80' }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    
+                    {{-- Overlay Gradient --}}
+                    <div class="absolute inset-0 bg-gradient-to-t from-luxury-dark/90 via-luxury-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+                    
+                    {{-- Content --}}
+                    <div class="relative flex-1 flex flex-col justify-end p-6 md:p-8 z-10">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4">
+                            <div class="flex-1">
+                                <span class="inline-block px-3 py-1 mb-3 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white font-label text-[10px] tracking-widest uppercase">
+                                    Mới Nhất
+                                </span>
+                                <h3 class="font-headline text-white text-xl md:text-3xl font-extrabold leading-tight mb-1 line-clamp-2 drop-shadow-lg">
+                                    {{ $product->name }}
+                                </h3>
+                            </div>
+                            <div class="text-left sm:text-right shrink-0 flex items-center justify-between sm:block">
+                                <span class="font-headline text-accent-gold text-lg md:text-2xl font-bold block sm:mb-3 drop-shadow-md">
+                                    {{ $product->formatted_price ?? number_format($product->price, 0, ',', '.') . 'đ' }}
+                                </span>
+                                <a href="{{ route('products.show', $product) }}" class="inline-flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-luxury-dark hover:bg-accent-gold hover:text-white transition-colors duration-300">
+                                    <span class="material-symbols-outlined text-sm md:text-base">arrow_outward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             @empty
-                <div class="md:col-span-12 text-center py-20">
-                    <p class="font-body text-on-surface-variant text-lg">Sắp ra mắt...</p>
+                <div class="md:col-span-4 text-center py-20 bg-stone-50 rounded-[2rem]">
+                    <p class="font-body text-on-surface-variant text-lg">Đang cập nhật bộ sưu tập mới...</p>
                 </div>
             @endforelse
         </div>

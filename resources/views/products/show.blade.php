@@ -91,12 +91,21 @@
                                     </span>
                                 </div>
 
-                                <button type="button" 
-                                        onclick="addToCart({{ $product->id }}, document.getElementById('product-qty').value)"
-                                        class="btn-luxury w-full flex items-center justify-center gap-3">
-                                    <span>Thêm Vào Giỏ Hàng</span>
-                                    <span class="material-symbols-outlined text-sm">shopping_cart</span>
-                                </button>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" 
+                                            onclick="addToCart({{ $product->id }}, document.getElementById('product-qty').value)"
+                                            class="btn-luxury flex-1 flex items-center justify-center gap-2 !bg-transparent border-2 border-accent-gold !text-accent-gold hover:!bg-accent-gold hover:!text-white transition-colors duration-300">
+                                        <span class="material-symbols-outlined text-sm">shopping_cart</span>
+                                        <span>Giỏ Hàng</span>
+                                    </button>
+                                    
+                                    <button type="button" 
+                                            onclick="buyNow({{ $product->id }}, document.getElementById('product-qty').value)"
+                                            class="btn-luxury flex-1 flex items-center justify-center gap-2">
+                                        <span>Mua Ngay</span>
+                                        <span class="material-symbols-outlined text-sm">bolt</span>
+                                    </button>
+                                </div>
                             </div>
                         @else
                             <div class="w-full py-5 bg-stone-50 text-stone-400 font-label text-[10px] uppercase tracking-[0.3em] text-center border border-stone-100 font-bold">

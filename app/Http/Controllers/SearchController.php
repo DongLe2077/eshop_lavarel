@@ -26,20 +26,13 @@ class SearchController extends Controller
             return response()->json([]);
         }
 
-        $keywords = explode(' ', $keyword);
         $query = Product::with('category');
 
-        $query->where(function ($q) use ($keywords, $keyword) {
-            foreach ($keywords as $word) {
-                if (trim($word) == '') continue;
-                $q->where(function ($sub) use ($word) {
-                    $sub->where('name', 'like', "%{$word}%")
-                        ->orWhere('description', 'like', "%{$word}%")
-                        ->orWhereHas('category', function ($catQuery) use ($word) {
-                            $catQuery->where('name', 'like', "%{$word}%");
-                        });
-                });
-            }
+        $query->where(function ($q) use ($keyword) {
+            $q->where('name', 'like', "%{$keyword}%")
+              ->orWhereHas('category', function ($catQuery) use ($keyword) {
+                  $catQuery->where('name', 'like', "%{$keyword}%");
+              });
         });
 
         // Lấy 5 kết quả tốt nhất làm gợi ý

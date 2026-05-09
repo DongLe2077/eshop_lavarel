@@ -18,23 +18,16 @@ class ProductController extends Controller
         // Tìm kiếm thông minh
         if ($request->filled('search')) {
             $search = $request->input('search');
-            $keywords = explode(' ', $search);
             
-            $query->where(function ($q) use ($keywords, $search) {
-                foreach ($keywords as $word) {
-                    if (trim($word) == '') continue;
-                    $q->where(function ($sub) use ($word) {
-                        $sub->where('name', 'like', "%{$word}%")
-                            ->orWhere('description', 'like', "%{$word}%")
-                            ->orWhereHas('category', function ($catQuery) use ($word) {
-                                $catQuery->where('name', 'like', "%{$word}%");
-                            });
-                    });
-                }
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                  ->orWhereHas('category', function ($catQuery) use ($search) {
+                      $catQuery->where('name', 'like', "%{$search}%");
+                  });
             });
 
             // Ưu tiên kết quả trùng khớp tên sản phẩm hơn (đưa lên đầu)
-            $query->orderByRaw("CASE WHEN name LIKE ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END", ["%{$search}%", "%" . $keywords[0] . "%"]);
+            $query->orderByRaw("CASE WHEN name LIKE ? THEN 1 ELSE 2 END", ["%{$search}%"]);
         }
 
         // Sắp xếp
