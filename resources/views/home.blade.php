@@ -55,7 +55,7 @@
                         <div class="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
                             <img alt="{{ $fProduct->name }}" 
                                  class="w-full h-full object-cover object-center transition-transform duration-[15s] ease-out group-hover:scale-110"
-                                 src="{{ $fProduct->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80' }}"/>
+                                 src="{{ $fProduct->image_url ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80' }}"/>
                             
                             {{-- Overlay for contrast --}}
                             <div class="absolute inset-0 bg-luxury-dark/5 group-hover:bg-transparent transition-colors duration-700"></div>
@@ -102,7 +102,7 @@
                 @endphp
                 
                 <div class="{{ $span }} group relative rounded-[2rem] overflow-hidden bg-stone-100 border border-stone-200/50 hover:shadow-2xl transition-all duration-500 flex flex-col">
-                    <img src="{{ $product->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80' }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+                    <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                     
                     {{-- Overlay Gradient --}}
                     <div class="absolute inset-0 bg-gradient-to-t from-luxury-dark/90 via-luxury-dark/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>

@@ -27,9 +27,19 @@ class ProductController extends Controller
             'name' => 'required|max:256',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
-        Product::create($request->all());
+        $data = $request->except('image_file');
+
+        // Nếu không upload file, giữ URL ảnh cũ (nếu có)
+        $product = Product::create($data);
+
+        // Upload ảnh qua MediaLibrary nếu có file
+        if ($request->hasFile('image_file')) {
+            $product->addMediaFromRequest('image_file')
+                ->toMediaCollection('products');
+        }
 
         return redirect()->route('admin.products.index')->with('success', 'Thêm sản phẩm thành công!');
     }
@@ -46,9 +56,17 @@ class ProductController extends Controller
             'name' => 'required|max:256',
             'price' => 'required|numeric',
             'category_id' => 'required|exists:categories,id',
+            'image_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
 
-        $product->update($request->all());
+        $data = $request->except('image_file');
+        $product->update($data);
+
+        // Upload ảnh mới nếu có (singleFile() sẽ tự xóa ảnh cũ)
+        if ($request->hasFile('image_file')) {
+            $product->addMediaFromRequest('image_file')
+                ->toMediaCollection('products');
+        }
 
         return redirect()->route('admin.products.index')->with('success', 'Cập nhật sản phẩm thành công!');
     }

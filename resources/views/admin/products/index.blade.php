@@ -37,7 +37,7 @@
                 <td class="px-6 py-4">
                     <div class="flex items-center">
                         <div class="w-10 h-10 rounded-lg bg-slate-100 mr-3 flex-shrink-0 overflow-hidden border border-slate-200">
-                            <img src="{{ $product->image }}" alt="" class="w-full h-full object-cover">
+                            <img src="{{ $product->image_url }}" alt="" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <div class="font-semibold text-slate-800">{{ $product->name }}</div>

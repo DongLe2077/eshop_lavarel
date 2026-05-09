@@ -22,7 +22,7 @@
                         <img alt="{{ $product->name }}"
                              id="main-product-image"
                              class="w-full h-full object-cover object-center hover:scale-110 transition-transform duration-[1.5s] ease-out cursor-zoom-in"
-                             src="{{ $product->image ?: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=80' }}"
+                             src="{{ $product->image_url }}"
                              onclick="openLightbox(0)"/>
                         
                         {{-- Zoom Hint --}}
@@ -37,8 +37,8 @@
                         <div class="grid grid-cols-4 gap-4">
                             {{-- Add original image as first thumbnail --}}
                             <div class="aspect-[3/4] bg-stone-50 overflow-hidden cursor-pointer border-2 border-accent-gold thumbnail-item" 
-                                 onclick="swapMainImage('{{ $product->image }}', this, 0)">
-                                <img src="{{ $product->image }}" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
+                                 onclick="swapMainImage('{{ $product->image_url }}', this, 0)">
+                                <img src="{{ $product->image_url }}" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity">
                             </div>
                             
                             @foreach($product->images as $index => $gImage)

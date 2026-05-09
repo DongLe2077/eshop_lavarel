@@ -11,7 +11,7 @@
         </a>
     </div>
 
-    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="bg-white rounded-2xl shadow-sm border border-slate-100 p-8">
         @csrf
         @method('PUT')
 
@@ -56,24 +56,39 @@
 
             {{-- Cột phải --}}
             <div class="space-y-6">
+                {{-- Ảnh hiện tại --}}
                 <div>
-                    <label for="image" class="block text-sm font-semibold text-slate-700 mb-2">Đường dẫn ảnh (URL)</label>
-                    <div class="flex gap-4">
-                        @if($product->image)
-                            <div class="w-16 h-16 bg-slate-100 rounded-lg overflow-hidden border border-slate-200 flex-shrink-0">
-                                <img src="{{ $product->image }}" alt="Preview" class="w-full h-full object-cover">
-                            </div>
-                        @endif
-                        <div class="flex-grow">
-                            <input type="text" name="image" id="image" value="{{ old('image', $product->image) }}"
-                                   class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
-                        </div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Ảnh hiện tại</label>
+                    <div class="w-32 h-32 bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="w-full h-full object-cover">
                     </div>
+                </div>
+
+                {{-- Upload ảnh mới --}}
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Thay ảnh mới</label>
+                    <div id="dropzone" class="relative border-2 border-dashed border-slate-300 rounded-xl p-6 text-center hover:border-blue-400 transition-colors cursor-pointer bg-slate-50">
+                        <input type="file" name="image_file" id="image_file" accept="image/*" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div id="upload-placeholder">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-slate-400 mb-2"></i>
+                            <p class="text-sm text-slate-500">Kéo thả ảnh vào đây hoặc <span class="text-blue-500 font-semibold">chọn file</span></p>
+                            <p class="text-xs text-slate-400 mt-1">JPEG, PNG, WebP — Tối đa 5MB</p>
+                        </div>
+                        <img id="image-preview" class="hidden mx-auto max-h-48 rounded-lg object-contain" alt="Preview">
+                    </div>
+                    @error('image_file') <p class="text-red-500 text-xs mt-1">{{ $message }}</p> @enderror
+                </div>
+
+                {{-- Hoặc dán URL --}}
+                <div>
+                    <label for="image" class="block text-sm font-semibold text-slate-700 mb-2">Hoặc dán URL ảnh</label>
+                    <input type="text" name="image" id="image" value="{{ old('image', $product->image) }}"
+                           class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
                 </div>
 
                 <div>
                     <label for="description" class="block text-sm font-semibold text-slate-700 mb-2">Mô tả sản phẩm</label>
-                    <textarea name="description" id="description" rows="7"
+                    <textarea name="description" id="description" rows="5"
                               class="w-full px-4 py-3 rounded-lg border border-slate-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">{{ old('description', $product->description) }}</textarea>
                 </div>
             </div>
@@ -86,5 +101,19 @@
         </div>
     </form>
 </div>
-@endsection
 
+<script>
+document.getElementById('image_file').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            document.getElementById('image-preview').src = ev.target.result;
+            document.getElementById('image-preview').classList.remove('hidden');
+            document.getElementById('upload-placeholder').classList.add('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+@endsection
