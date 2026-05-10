@@ -29,12 +29,15 @@ class UserController extends Controller
             'role' => 'required|in:admin,customer',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
+
+        // Đồng bộ vai trò Spatie
+        $user->syncRoles($request->role);
 
         return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được tạo thành công.');
     }
@@ -64,6 +67,9 @@ class UserController extends Controller
         }
 
         $user->update($data);
+
+        // Đồng bộ vai trò Spatie
+        $user->syncRoles($request->role);
 
         return redirect()->route('admin.users.index')->with('success', 'Thông tin người dùng đã được cập nhật.');
     }
