@@ -48,4 +48,5 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 EXPOSE 80
 
 # Chạy Apache ở chế độ foreground
-CMD ["apache2-foreground"]
+# Chạy Migration, Seed dữ liệu rồi mới khởi động Apache
+CMD php artisan migrate --force && php artisan db:seed --class=RolePermissionSeeder --force && apache2-foreground
