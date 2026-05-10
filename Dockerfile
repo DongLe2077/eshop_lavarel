@@ -44,9 +44,12 @@ RUN curl -fsSL https://deb.nodesource.com/setup_18.x -o nodesource_setup.sh && \
 # Cấp quyền cho thư mục storage và bootstrap/cache
 RUN chown -R www-data:www-data storage bootstrap/cache
 
+# Copy startup script và cấp quyền thực thi
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Port mặc định của Render là 80 hoặc 10000, Apache mặc định chạy 80
 EXPOSE 80
 
-# Chạy Apache ở chế độ foreground
-# Chạy Migration, Seed dữ liệu rồi mới khởi động Apache (Dùng ; để không bị dừng nếu lỗi bảng đã tồn tại)
-CMD php artisan migrate --force ; php artisan db:seed --class=RolePermissionSeeder --force ; apache2-foreground
+# Chạy startup script (migration từng file + seed + Apache)
+CMD ["docker-entrypoint.sh"]
