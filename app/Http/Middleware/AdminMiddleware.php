@@ -15,8 +15,20 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && (auth()->user()->hasRole('admin') || auth()->user()->role === 'admin')) {
-            return $next($request);
+        if (auth()->check()) {
+            $user = auth()->user();
+
+            // Kiểm tra quyền: Spatie trước, fallback về cột role cũ
+            try {
+                if ($user->hasRole('admin') || $user->role === 'admin') {
+                    return $next($request);
+                }
+            } catch (\Exception $e) {
+                // Nếu bảng permission chưa tồn tại, dùng cột role cũ
+                if ($user->role === 'admin') {
+                    return $next($request);
+                }
+            }
         }
 
         return redirect('/')->with('error', 'Bạn không có quyền truy cập vào khu vực này.');

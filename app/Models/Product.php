@@ -50,9 +50,13 @@ class Product extends Model implements HasMedia
      */
     public function getImageUrlAttribute(): string
     {
-        $mediaUrl = $this->getFirstMediaUrl('products');
-        if ($mediaUrl) {
-            return $mediaUrl;
+        try {
+            $mediaUrl = $this->getFirstMediaUrl('products');
+            if ($mediaUrl) {
+                return $mediaUrl;
+            }
+        } catch (\Exception $e) {
+            // Bảng media chưa tồn tại, dùng cột image cũ
         }
         return $this->image ?: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=800&fit=crop';
     }
