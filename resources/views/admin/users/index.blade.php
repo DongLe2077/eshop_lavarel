@@ -23,7 +23,9 @@
         <tbody class="divide-y divide-slate-100">
             @forelse($users as $user)
             <tr class="hover:bg-slate-50/50 transition-colors group">
-                <td class="px-6 py-4 text-slate-500 font-medium">#{{ $user->id }}</td>
+                <td class="px-6 py-4 text-slate-500 font-medium">
+                    #{{ $users->total() - ($users->currentPage() - 1) * $users->perPage() - $loop->index }}
+                </td>
                 <td class="px-6 py-4 font-semibold text-slate-800">
                     <div class="flex items-center">
                         <div class="w-8 h-8 rounded-full bg-slate-200 mr-3 flex items-center justify-center text-slate-500 font-bold text-xs">
