@@ -20,6 +20,14 @@ class UserController extends Controller
         return view('admin.users.create');
     }
 
+    /**
+     * Redirect show sang edit (vì không có trang show riêng).
+     */
+    public function show(User $user)
+    {
+        return redirect()->route('admin.users.edit', $user->id);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -36,8 +44,12 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        // Đồng bộ vai trò Spatie
-        $user->syncRoles($request->role);
+        // Đồng bộ vai trò Spatie (bỏ qua nếu bảng roles chưa tồn tại)
+        try {
+            $user->syncRoles($request->role);
+        } catch (\Exception $e) {
+            // Bảng permission chưa được migrate, bỏ qua
+        }
 
         return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được tạo thành công.');
     }
@@ -68,8 +80,12 @@ class UserController extends Controller
 
         $user->update($data);
 
-        // Đồng bộ vai trò Spatie
-        $user->syncRoles($request->role);
+        // Đồng bộ vai trò Spatie (bỏ qua nếu bảng roles chưa tồn tại)
+        try {
+            $user->syncRoles($request->role);
+        } catch (\Exception $e) {
+            // Bảng permission chưa được migrate, bỏ qua
+        }
 
         return redirect()->route('admin.users.index')->with('success', 'Thông tin người dùng đã được cập nhật.');
     }
