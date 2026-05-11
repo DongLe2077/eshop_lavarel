@@ -17,6 +17,7 @@
                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Tên hiển thị</th>
                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Email / Username</th>
                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Vai trò</th>
+                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider">Quyền hạn</th>
                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-wider text-right">Thao tác</th>
             </tr>
         </thead>
@@ -39,14 +40,36 @@
                 </td>
                 <td class="px-6 py-4">
                     @if($user->role == 'admin')
-                        <span class="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">Admin</span>
+                        <span class="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium">
+                            <i class="fas fa-crown mr-1"></i>Admin
+                        </span>
                     @else
                         <span class="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">Customer</span>
                     @endif
                 </td>
+                <td class="px-6 py-4">
+                    @if($user->role == 'admin')
+                        <span class="text-xs text-purple-500 font-medium">Toàn quyền</span>
+                    @else
+                        @php
+                            try {
+                                $permCount = $user->getDirectPermissions()->count();
+                            } catch (\Exception $e) {
+                                $permCount = 0;
+                            }
+                        @endphp
+                        @if($permCount > 0)
+                            <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-medium">
+                                <i class="fas fa-shield-alt mr-1"></i>{{ $permCount }} quyền
+                            </span>
+                        @else
+                            <span class="text-xs text-slate-400">Mặc định</span>
+                        @endif
+                    @endif
+                </td>
                 <td class="px-6 py-4 text-right">
                     <div class="flex justify-end space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <a href="{{ route('admin.users.edit', $user->id) }}" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all">
+                        <a href="{{ route('admin.users.edit', $user->id) }}" class="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Chỉnh sửa & Phân quyền">
                             <i class="fas fa-edit"></i>
                         </a>
                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline" onsubmit="return confirm('Bạn có chắc chắn muốn xóa?')">
@@ -71,4 +94,3 @@
     </div>
 </div>
 @endsection
-

@@ -16,13 +16,22 @@ class RolePermissionSeeder extends Seeder
 
         // === Tạo Permissions ===
         $permissions = [
+            // Sản phẩm
             'view products',
             'create products',
             'edit products',
             'delete products',
+            // Danh mục
+            'view categories',
+            'create categories',
+            'edit categories',
+            'delete categories',
+            // Đơn hàng
             'view orders',
             'manage orders',
+            // Phân tích
             'view analytics',
+            // Quản lý người dùng
             'manage users',
             'manage roles',
         ];

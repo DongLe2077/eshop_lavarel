@@ -10,6 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
+        $this->authorizePermission('view orders');
         $orders = Order::with('user')->orderBy('id', 'desc')->paginate(10);
         return view('admin.orders.index', compact('orders'));
     }
@@ -43,6 +44,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $this->authorizePermission('manage orders');
         $order = Order::findOrFail($id);
         
         $request->validate([
@@ -61,10 +63,28 @@ class OrderController extends Controller
      */
     public function destroy(string $id)
     {
+        $this->authorizePermission('manage orders');
         $order = Order::findOrFail($id);
         $order->details()->delete();
         $order->delete();
 
         return redirect()->back()->with('success', 'Đã xóa đơn hàng thành công!');
+    }
+
+    /**
+     * Kiểm tra permission - admin toàn quyền, user khác cần permission cụ thể.
+     */
+    private function authorizePermission(string $permission): void
+    {
+        $user = auth()->user();
+        if ($user->role === 'admin') return;
+
+        try {
+            if (!$user->hasPermissionTo($permission)) {
+                abort(403, 'Bạn không có quyền thực hiện hành động này.');
+            }
+        } catch (\Exception $e) {
+            abort(403, 'Bạn không có quyền thực hiện hành động này.');
+        }
     }
 }

@@ -16,6 +16,8 @@ class AnalyticsController extends Controller
 
     public function index()
     {
+        $this->authorizePermission('view analytics');
+
         try {
             // Revenue APIs
             $revenueOverview = $this->callApi('/api/revenue/overview');
@@ -78,5 +80,22 @@ class AnalyticsController extends Controller
         }
         
         return $response->json();
+    }
+
+    /**
+     * Kiểm tra permission - admin toàn quyền, user khác cần permission cụ thể.
+     */
+    private function authorizePermission(string $permission): void
+    {
+        $user = auth()->user();
+        if ($user->role === 'admin') return;
+
+        try {
+            if (!$user->hasPermissionTo($permission)) {
+                abort(403, 'Bạn không có quyền thực hiện hành động này.');
+            }
+        } catch (\Exception $e) {
+            abort(403, 'Bạn không có quyền thực hiện hành động này.');
+        }
     }
 }

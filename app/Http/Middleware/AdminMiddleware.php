@@ -20,7 +20,21 @@ class AdminMiddleware
 
             // Kiểm tra quyền: Spatie trước, fallback về cột role cũ
             try {
+                // Admin toàn quyền HOẶC user có ít nhất 1 permission admin
                 if ($user->hasRole('admin') || $user->role === 'admin') {
+                    return $next($request);
+                }
+
+                // Cho phép user có bất kỳ permission nào trong nhóm admin truy cập admin panel
+                $adminPermissions = [
+                    'view products', 'create products', 'edit products', 'delete products',
+                    'view categories', 'create categories', 'edit categories', 'delete categories',
+                    'view orders', 'manage orders',
+                    'view analytics',
+                    'manage users', 'manage roles',
+                ];
+
+                if ($user->hasAnyPermission($adminPermissions)) {
                     return $next($request);
                 }
             } catch (\Exception $e) {
@@ -30,7 +44,7 @@ class AdminMiddleware
                 }
             }
 
-            // Đã đăng nhập nhưng không phải admin
+            // Đã đăng nhập nhưng không phải admin và không có permission
             return redirect()->route('home')->with('error', 'Bạn không có quyền truy cập vào khu vực này.');
         }
 

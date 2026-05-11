@@ -11,18 +11,21 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $this->authorizePermission('view products');
         $products = Product::with('category')->orderBy('id', 'desc')->paginate(10);
         return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
+        $this->authorizePermission('create products');
         $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $this->authorizePermission('create products');
         $request->validate([
             'name' => 'required|max:256',
             'price' => 'required|numeric',
@@ -46,12 +49,14 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        $this->authorizePermission('edit products');
         $categories = Category::all();
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, Product $product)
     {
+        $this->authorizePermission('edit products');
         $request->validate([
             'name' => 'required|max:256',
             'price' => 'required|numeric',
@@ -73,17 +78,36 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
+        $this->authorizePermission('delete products');
         $product->delete();
         return redirect()->route('admin.products.index')->with('success', 'Xóa sản phẩm thành công!');
     }
 
     public function bulkDelete(Request $request)
     {
+        $this->authorizePermission('delete products');
         $ids = $request->ids;
         if (!empty($ids)) {
             Product::whereIn('id', $ids)->delete();
             return response()->json(['success' => 'Đã xóa ' . count($ids) . ' sản phẩm.']);
         }
         return response()->json(['error' => 'Vui lòng chọn sản phẩm cần xóa.'], 400);
+    }
+
+    /**
+     * Kiểm tra permission - admin toàn quyền, user khác cần permission cụ thể.
+     */
+    private function authorizePermission(string $permission): void
+    {
+        $user = auth()->user();
+        if ($user->role === 'admin') return; // Admin cũ toàn quyền
+
+        try {
+            if (!$user->hasPermissionTo($permission)) {
+                abort(403, 'Bạn không có quyền thực hiện hành động này.');
+            }
+        } catch (\Exception $e) {
+            abort(403, 'Bạn không có quyền thực hiện hành động này.');
+        }
     }
 }
