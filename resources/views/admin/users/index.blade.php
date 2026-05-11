@@ -24,7 +24,7 @@
             @forelse($users as $user)
             <tr class="hover:bg-slate-50/50 transition-colors group">
                 <td class="px-6 py-4 text-slate-500 font-medium">
-                    #{{ $users->total() - ($users->currentPage() - 1) * $users->perPage() - $loop->index }}
+                    #{{ $user->id }}
                 </td>
                 <td class="px-6 py-4 font-semibold text-slate-800">
                     <div class="flex items-center">
