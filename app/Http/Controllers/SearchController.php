@@ -28,16 +28,16 @@ class SearchController extends Controller
         }
 
         $query = Product::with('category');
-        $keywordPlain = VietnameseHelper::removeDiacritics($keyword);
+        $keywordPlain = mb_strtolower(VietnameseHelper::removeDiacritics($keyword));
         $like         = "%{$keyword}%";
         $likePlain    = "%{$keywordPlain}%";
 
         $query->where(function ($q) use ($like, $likePlain) {
             $q->where('name', 'like', $like)
-              ->orWhere('name', 'like', $likePlain)
+              ->orWhere('search_name', 'like', $likePlain)
               ->orWhereHas('category', function ($catQuery) use ($like, $likePlain) {
                   $catQuery->where('name', 'like', $like)
-                           ->orWhere('name', 'like', $likePlain);
+                           ->orWhere('search_name', 'like', $likePlain);
               });
         });
 

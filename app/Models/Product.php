@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
+use App\Helpers\VietnameseHelper;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -20,6 +21,7 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'name',
         'slug',
+        'search_name',
         'description',
         'image',
         'price',
@@ -67,10 +69,15 @@ class Product extends Model implements HasMedia
     protected static function booted()
     {
         static::saving(function ($product) {
+            // Tự động tạo search_name (tên không dấu, viết thường) cho tìm kiếm
+            if (empty($product->search_name) || $product->isDirty('name')) {
+                $product->search_name = mb_strtolower(VietnameseHelper::removeDiacritics($product->name));
+            }
+
             if (empty($product->slug) || $product->isDirty('name')) {
                 $product->slug = Str::slug($product->name);
                 
-                // Đảm bảo slug là duy nhất (nếu cần xử lý trùng lặp phức tạp hơn có thể thêm ở đây)
+                // Đảm bảo slug là duy nhất
                 $originalSlug = $product->slug;
                 $count = 1;
                 while (static::where('slug', $product->slug)->where('id', '!=', $product->id)->exists()) {
