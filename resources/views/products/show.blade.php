@@ -94,8 +94,8 @@
                                 <div class="flex items-center gap-4">
                                     <button type="button" 
                                             onclick="addToCart({{ $product->id }}, document.getElementById('product-qty').value)"
-                                            class="btn-luxury flex-1 flex items-center justify-center gap-2 !bg-transparent border-2 border-accent-gold !text-accent-gold hover:!bg-accent-gold hover:!text-white transition-colors duration-300">
-                                        <span class="material-symbols-outlined text-sm">shopping_cart</span>
+                                            class="flex-1 flex items-center justify-center gap-2 px-10 py-4 uppercase tracking-[0.2em] text-[11px] font-bold border-2 border-luxury-dark bg-transparent text-luxury-dark hover:bg-luxury-dark hover:text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(10,10,10,0.2)] group">
+                                        <span class="material-symbols-outlined text-sm transition-transform duration-300 group-hover:scale-125">shopping_cart</span>
                                         <span>Giỏ Hàng</span>
                                     </button>
                                     

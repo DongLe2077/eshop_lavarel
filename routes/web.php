@@ -40,7 +40,7 @@ Route::middleware('guest')->group(function () {
 
 // Đăng xuất & Đơn hàng (Auth required)
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::any('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 

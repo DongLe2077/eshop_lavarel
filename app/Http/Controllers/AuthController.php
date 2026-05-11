@@ -50,10 +50,10 @@ class AuthController extends Controller
             
             // Phân quyền chuyển hướng
             if ($user->role === 'admin') {
-                return redirect()->intended(route('admin.dashboard'));
+                return redirect()->route('admin.dashboard');
             }
 
-            return redirect()->intended(route('home'));
+            return redirect()->route('home');
         }
 
         return back()->with('error', 'Email hoặc mật khẩu không đúng.')->withInput();
