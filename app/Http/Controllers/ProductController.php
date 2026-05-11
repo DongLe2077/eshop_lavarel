@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Helpers\VietnameseHelper;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,21 +16,24 @@ class ProductController extends Controller
     {
         $query = Product::with('category');
 
-        // Tìm kiếm thông minh (không phân biệt dấu tiếng Việt)
+        // Tìm kiếm thông minh (hỗ trợ tiếng Việt có dấu và không dấu)
         if ($request->filled('search')) {
-            $search = $request->input('search');
-            $like = "%{$search}%";
+            $search     = $request->input('search');
+            $searchPlain = VietnameseHelper::removeDiacritics($search);
+            $like        = "%{$search}%";
+            $likePlain   = "%{$searchPlain}%";
 
-            $query->where(function ($q) use ($like) {
-                $q->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like])
-                  ->orWhereHas('category', function ($catQuery) use ($like) {
-                      $catQuery->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like]);
-                  })
-                  ->orWhereRaw('description COLLATE utf8mb4_general_ci LIKE ?', [$like]);
+            $query->where(function ($q) use ($like, $likePlain) {
+                $q->where('name', 'like', $like)
+                  ->orWhere('name', 'like', $likePlain)
+                  ->orWhereHas('category', function ($catQuery) use ($like, $likePlain) {
+                      $catQuery->where('name', 'like', $like)
+                               ->orWhere('name', 'like', $likePlain);
+                  });
             });
 
-            // Ưu tiên kết quả tên trùng khớp trực tiếp hơn
-            $query->orderByRaw('CASE WHEN name COLLATE utf8mb4_general_ci LIKE ? THEN 1 ELSE 2 END', [$like]);
+            // Ưu tiên tên trùng khớp chính xác hơn
+            $query->orderByRaw('CASE WHEN name LIKE ? THEN 1 WHEN name LIKE ? THEN 2 ELSE 3 END', [$like, $likePlain]);
         }
 
         // Sắp xếp

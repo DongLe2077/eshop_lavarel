@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Helpers\VietnameseHelper;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -27,17 +28,20 @@ class SearchController extends Controller
         }
 
         $query = Product::with('category');
-        $like = "%{$keyword}%";
+        $keywordPlain = VietnameseHelper::removeDiacritics($keyword);
+        $like         = "%{$keyword}%";
+        $likePlain    = "%{$keywordPlain}%";
 
-        $query->where(function ($q) use ($like) {
-            $q->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like])
-              ->orWhereHas('category', function ($catQuery) use ($like) {
-                  $catQuery->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like]);
-              })
-              ->orWhereRaw('description COLLATE utf8mb4_general_ci LIKE ?', [$like]);
+        $query->where(function ($q) use ($like, $likePlain) {
+            $q->where('name', 'like', $like)
+              ->orWhere('name', 'like', $likePlain)
+              ->orWhereHas('category', function ($catQuery) use ($like, $likePlain) {
+                  $catQuery->where('name', 'like', $like)
+                           ->orWhere('name', 'like', $likePlain);
+              });
         });
 
-        // Lấy 6 kết quả tốt nhất làm gợi ý
+        // Lấy 6 kết quả tốt nhất
         $products = $query->take(6)->get()->map(function ($product) {
             return [
                 'id'       => $product->slug,
