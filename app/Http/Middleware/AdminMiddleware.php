@@ -29,8 +29,12 @@ class AdminMiddleware
                     return $next($request);
                 }
             }
+
+            // Đã đăng nhập nhưng không phải admin
+            return redirect()->route('home')->with('error', 'Bạn không có quyền truy cập vào khu vực này.');
         }
 
-        return redirect('/')->with('error', 'Bạn không có quyền truy cập vào khu vực này.');
+        // Chưa đăng nhập → về trang login
+        return redirect()->route('login')->with('error', 'Vui lòng đăng nhập để tiếp tục.');
     }
 }

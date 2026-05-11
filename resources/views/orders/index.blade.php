@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0">
-                    <a href="{{ route('home') }}" class="font-label text-xs text-primary uppercase tracking-widest border-b border-primary hover:opacity-70 transition-opacity pb-1 font-bold">Tiếp Tục Mua Sắm</a>
+                    <a href="{{ route('products.index') }}" class="font-label text-xs text-primary uppercase tracking-widest border-b border-primary hover:opacity-70 transition-opacity pb-1 font-bold">Tiếp Tục Mua Sắm</a>
                 </div>
             </div>
         @endif
@@ -60,7 +60,7 @@
                         @foreach($order->details as $detail)
                             <div class="flex items-center gap-4 py-2">
                                 <div class="w-14 h-18 bg-surface-variant rounded overflow-hidden flex-shrink-0">
-                                    <img src="{{ $detail->product->image ?? 'https://placehold.co/100x100/e5e2e1/56423e?text=SP' }}"
+                                    <img src="{{ $detail->product->image_url ?? 'https://placehold.co/100x100/e5e2e1/56423e?text=SP' }}"
                                          alt="{{ $detail->product->name ?? 'Sản phẩm' }}" class="w-full h-full object-cover"/>
                                 </div>
                                 <div class="flex-grow">
