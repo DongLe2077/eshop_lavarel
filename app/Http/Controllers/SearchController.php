@@ -27,23 +27,25 @@ class SearchController extends Controller
         }
 
         $query = Product::with('category');
+        $like = "%{$keyword}%";
 
-        $query->where(function ($q) use ($keyword) {
-            $q->where('name', 'like', "%{$keyword}%")
-              ->orWhereHas('category', function ($catQuery) use ($keyword) {
-                  $catQuery->where('name', 'like', "%{$keyword}%");
-              });
+        $query->where(function ($q) use ($like) {
+            $q->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like])
+              ->orWhereHas('category', function ($catQuery) use ($like) {
+                  $catQuery->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like]);
+              })
+              ->orWhereRaw('description COLLATE utf8mb4_general_ci LIKE ?', [$like]);
         });
 
-        // Lấy 5 kết quả tốt nhất làm gợi ý
-        $products = $query->take(5)->get()->map(function ($product) {
+        // Lấy 6 kết quả tốt nhất làm gợi ý
+        $products = $query->take(6)->get()->map(function ($product) {
             return [
-                'id' => $product->slug,
-                'name' => $product->name,
-                'price' => $product->formatted_price,
-                'image' => $product->image ?: 'https://placehold.co/100x100/e5e2e1/56423e?text=No+Img',
+                'id'       => $product->slug,
+                'name'     => $product->name,
+                'price'    => $product->formatted_price,
+                'image'    => $product->image_url,
                 'category' => $product->category->name ?? 'Khác',
-                'url' => route('products.show', $product)
+                'url'      => route('products.show', $product)
             ];
         });
 

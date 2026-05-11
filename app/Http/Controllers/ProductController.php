@@ -15,19 +15,21 @@ class ProductController extends Controller
     {
         $query = Product::with('category');
 
-        // Tìm kiếm thông minh
+        // Tìm kiếm thông minh (không phân biệt dấu tiếng Việt)
         if ($request->filled('search')) {
             $search = $request->input('search');
-            
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                  ->orWhereHas('category', function ($catQuery) use ($search) {
-                      $catQuery->where('name', 'like', "%{$search}%");
-                  });
+            $like = "%{$search}%";
+
+            $query->where(function ($q) use ($like) {
+                $q->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like])
+                  ->orWhereHas('category', function ($catQuery) use ($like) {
+                      $catQuery->whereRaw('name COLLATE utf8mb4_general_ci LIKE ?', [$like]);
+                  })
+                  ->orWhereRaw('description COLLATE utf8mb4_general_ci LIKE ?', [$like]);
             });
 
-            // Ưu tiên kết quả trùng khớp tên sản phẩm hơn (đưa lên đầu)
-            $query->orderByRaw("CASE WHEN name LIKE ? THEN 1 ELSE 2 END", ["%{$search}%"]);
+            // Ưu tiên kết quả tên trùng khớp trực tiếp hơn
+            $query->orderByRaw('CASE WHEN name COLLATE utf8mb4_general_ci LIKE ? THEN 1 ELSE 2 END', [$like]);
         }
 
         // Sắp xếp
