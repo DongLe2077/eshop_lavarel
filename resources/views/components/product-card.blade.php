@@ -7,7 +7,7 @@
         <a href="{{ route('products.show', $product) }}" class="block w-full h-full">
             <img alt="{{ $product->name }}"
                  class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
-                 src="{{ $product->image ?: 'https://placehold.co/600x800/e5e2e1/56423e?text=' . urlencode($product->name) }}"/>
+                 src="{{ $product->image_url }}"/>
         </a>
         
         {{-- Floating Badges --}}

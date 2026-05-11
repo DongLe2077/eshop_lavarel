@@ -68,7 +68,7 @@
                     <a href="{{ route('products.show', $product) }}" class="relative block aspect-[3/4] overflow-hidden bg-surface-container mb-6">
                         <img alt="{{ $product->name }}"
                              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                             src="{{ $product->image ?: 'https://placehold.co/600x800/e5e2e1/56423e?text=' . urlencode($product->name) }}"/>
+                             src="{{ $product->image_url }}"/>
                         
                         {{-- Badges --}}
                         @if($product->quanlity <= 5 && $product->quanlity > 0)
