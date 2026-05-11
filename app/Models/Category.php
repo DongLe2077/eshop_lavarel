@@ -11,7 +11,7 @@ class Category extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
     /**
      * Lấy tất cả sản phẩm thuộc danh mục này.
